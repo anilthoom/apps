@@ -26,6 +26,8 @@ public class Product {
 
     private boolean active;
 
+    private int unitsInStock;
+
     private Date dateCreated;
 
     private Date lastUpdated;
