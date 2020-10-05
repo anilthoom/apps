@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AngularEcomm"
+    }
+  },
+  "defaultProject": "AngularEcomm",
+  "cli": {
+    "analytics": false
+  }
 }
