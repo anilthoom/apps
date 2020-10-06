@@ -10,11 +10,11 @@ import { ProductCategoryMenuComponent } from './components/product-category-menu
 
 
 const routes: Routes = [
-  {path: 'category/:id', component: ProductListComponent},
-  {path: 'category', component: ProductListComponent},
-  {path: 'products', component: ProductListComponent},
-  {path: '', redirectTo: '/products', pathMatch:'full'},
-  {path: '**', redirectTo: '/products', pathMatch:'full'}
+  { path: 'category/:id', component: ProductListComponent },
+  { path: 'category', component: ProductListComponent },
+  { path: 'products', component: ProductListComponent },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '**', redirectTo: '/products', pathMatch: 'full' }
 ];
 
 @NgModule({
