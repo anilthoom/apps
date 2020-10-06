@@ -12,4 +12,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     // Query method match by category id
     // auto generated REST end point would be : /api/products/search/findByCategoryId?id=1
     Page<Product> findByCategoryId(@RequestParam("id") Long id, Pageable pageable);
+
+    Page<Product> findByNameContaining(@RequestParam("name") String name, Pageable pageable);
 }
