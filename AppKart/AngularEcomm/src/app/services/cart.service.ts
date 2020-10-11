@@ -52,17 +52,17 @@ export class CartService {
   }
   decrementQuantity(theCartItem: CartItem) {
     theCartItem.quantity--;
-    if(theCartItem.quantity == 0){
+    if (theCartItem.quantity == 0) {
       this.remove(theCartItem);
     }
-    else{
+    else {
       this.computeCartTotals();
     }
   }
-  remove(theCartItem: CartItem){
+  remove(theCartItem: CartItem) {
     const itemIndex = this.cartItems.findIndex(tempCartItem => tempCartItem.id === theCartItem.id);
 
-    if(itemIndex > -1){
+    if (itemIndex > -1) {
       this.cartItems.splice(itemIndex, 1);
 
       this.computeCartTotals();
