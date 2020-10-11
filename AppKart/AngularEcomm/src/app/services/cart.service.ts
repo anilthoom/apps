@@ -20,6 +20,44 @@ export class CartService {
   constructor() { }
 
   addToCart(theCartItem: CartItem){
+    let alreadyExistsInCart: boolean = false;
+    let existingCartItem: CartItem = undefined;
+
+    if(this.cartItems.length >0){
+      //Checking if item already exists in the cart.
+      for(let tempCartItem of this.cartItems){
+        if(tempCartItem.id === theCartItem.id){
+          existingCartItem = tempCartItem;
+          break;
+        }
+      }
+
+      alreadyExistsInCart = (existingCartItem != undefined);
+    }
+
+    if(alreadyExistsInCart){
+      //so we need to increment
+      existingCartItem.quantity++;
+    }
+    else{
+      this.cartItems.push(theCartItem);
+    }
+
+    //Compute total price and quantity
+    this.computeCartTotals();
     
+  }
+  computeCartTotals() {
+    let totalPriceValue: number = 0;
+    let totalQuantityValue: number = 0;
+
+    for(let currentCarItem of this.cartItems){
+      totalPriceValue += currentCarItem.quantity * currentCarItem.unitPrice;
+      totalQuantityValue += currentCarItem.quantity;
+    }
+
+    //Publish the new values. All the subscribers will receive the change
+    this.totalPrice.next(totalPriceValue);
+    this.totalQuantity.next(totalQuantityValue);
   }
 }
