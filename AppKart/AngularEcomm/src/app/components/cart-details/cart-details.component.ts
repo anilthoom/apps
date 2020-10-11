@@ -31,13 +31,13 @@ export class CartDetailsComponent implements OnInit {
 
     this.cartService.computeCartTotals();
   }
-  incrementQuantity(theCartItem: CartItem){
+  incrementQuantity(theCartItem: CartItem) {
     this.cartService.addToCart(theCartItem);
   }
-  decrementQuantity(theCartItem: CartItem){
+  decrementQuantity(theCartItem: CartItem) {
     this.cartService.decrementQuantity(theCartItem);
   }
-  remove(theCartItem: CartItem){
+  remove(theCartItem: CartItem) {
     this.cartService.remove(theCartItem);
   }
 }
