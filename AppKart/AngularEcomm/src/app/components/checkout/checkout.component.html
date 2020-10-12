@@ -100,7 +100,7 @@
                 <div class="input-space">
                     <label class="au-checkbox">
                         <input type="checkbox" (change)="copyShippingAddToBillingAdd($event)">
-                        <span class="au-checkmark">Billing Addres same as Shipping Address</span>
+                        <span class="au-checkmark"></span>Billing Addres same as Shipping Address
                     </label>
                 </div>
 
@@ -162,6 +162,79 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Creadit card information -->
+                <div formGroupName="creditCard" class="form-area">
+                    <h3>Credit Card</h3>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Card Type</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="cardType">
+                                    <option>Visa</option>
+                                    <option>Mastercard</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Name on Card</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="nameOnCard" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Card Number</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="cardNumber" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Security Code</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="securityCode" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Expiration Month</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationMonth">
+                                    <option>To Do</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label>Expiration Year</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationYear">
+                                    <option>To Do</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
 
                 <!--Submit button-->
                 <div class="text-center">
