@@ -18,8 +18,33 @@ export class CheckoutComponent implements OnInit {
         firstName: [''],
         lastName: [''],
         email: ['']
+      }),
+      shippingAddress: this.formBuilder.group({
+        street:[''],
+        city:[''],
+        state:[''],
+        coutry:[''],
+        zipCode:['']
+      }),
+      billingAddress: this.formBuilder.group({
+        street:[''],
+        city:[''],
+        state:[''],
+        coutry:[''],
+        zipCode:['']
+      }),
+      creditCard: this.formBuilder.group({
+        cardType:[''],
+        nameOnCard:[''],
+        cardNumber:[''],
+        securityCode:[''],
+        expirationMonth:[''],
+        expirationYear:['']
       })
     });
   }
-
+  onSubmit(){
+    console.log("Check out triggered");
+    console.log(this.checkoutFormGroup.get('customer').value);
+  }
 }
