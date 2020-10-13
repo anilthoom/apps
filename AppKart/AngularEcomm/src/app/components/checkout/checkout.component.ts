@@ -31,14 +31,14 @@ export class CheckoutComponent implements OnInit {
         street:[''],
         city:[''],
         state:[''],
-        coutry:[''],
+        country:[''],
         zipCode:['']
       }),
       billingAddress: this.formBuilder.group({
         street:[''],
         city:[''],
         state:[''],
-        coutry:[''],
+        country:[''],
         zipCode:['']
       }),
       creditCard: this.formBuilder.group({
