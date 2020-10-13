@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-checkout',
@@ -13,7 +14,11 @@ export class CheckoutComponent implements OnInit {
   totalPrice: number =0;
   totalQuantity: number =0;
 
-  constructor(private formBuilder: FormBuilder) { }
+  creditCardYears: number[] = [];
+  creditCardMonths: number[] = [];
+
+  constructor(private formBuilder: FormBuilder,
+              private utilityService: UtilityService) { }
 
   ngOnInit(): void {
     this.checkoutFormGroup = this.formBuilder.group({
@@ -45,6 +50,20 @@ export class CheckoutComponent implements OnInit {
         expirationYear:['']
       })
     });
+
+    //populate months 
+    const startMonth: number = new Date().getMonth()+1;
+    this.utilityService.getCreditCardMonths(startMonth).subscribe(
+      data => {
+        this.creditCardMonths = data;
+      }
+    );
+    //populate years
+    this.utilityService.getCreditCardYears().subscribe(
+      data => {
+        this.creditCardYears = data;
+      }
+    );
   }
   onSubmit(){
     console.log("Check out triggered");
