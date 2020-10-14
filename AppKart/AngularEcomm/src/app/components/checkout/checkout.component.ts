@@ -87,6 +87,10 @@ export class CheckoutComponent implements OnInit {
     console.log(this.checkoutFormGroup.get('customer').value);
   }
   
+  get firstName(){return this.checkoutFormGroup.get('customer.firstName');}
+  get lastName(){return this.checkoutFormGroup.get('customer.lastName');}
+  get emailName(){return this.checkoutFormGroup.get('customer.email');}
+
   copyShippingAddToBillingAdd(event){
     if(event.target.checked){
       this.checkoutFormGroup.controls.billingAddress
