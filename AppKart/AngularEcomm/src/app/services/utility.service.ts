@@ -10,8 +10,8 @@ import { State } from '../common/state';
 })
 export class UtilityService {
 
-  private countriesUrl = 'http://loccalhost:8080/api/countries';
-  private statesUrl = 'http://loccalhost:8080/api/states';
+  private countriesUrl = 'http://localhost:8080/api/countries';
+  private statesUrl = 'http://localhost:8080/api/states';
 
   constructor(private httpClient: HttpClient) { }
 
