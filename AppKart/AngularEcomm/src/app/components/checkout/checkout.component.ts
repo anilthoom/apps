@@ -129,6 +129,8 @@ export class CheckoutComponent implements OnInit {
         else{
           this.billingAddressStates = data;
         }
+
+        formGroup.get('state').setValue(data[0]);
       }
     )
   }
