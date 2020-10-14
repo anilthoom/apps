@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Country } from 'src/app/common/country';
+import { State } from 'src/app/common/state';
 import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
@@ -19,6 +20,10 @@ export class CheckoutComponent implements OnInit {
   creditCardMonths: number[] = [];
 
   countries: Country[] = [];
+
+  shippingAddressStates: State[] = [];
+  billingAddressStates: State[] = [];
+
 
   constructor(private formBuilder: FormBuilder,
               private utilityService: UtilityService) { }
@@ -106,6 +111,24 @@ export class CheckoutComponent implements OnInit {
     this.utilityService.getCreditCardMonths(startMonth).subscribe(
       data => {
         this.creditCardMonths = data;
+      }
+    )
+  }
+
+  getStates(formGroupName: string){
+    const formGroup = this.checkoutFormGroup.get(formGroupName);
+
+    const countryCode = formGroup.value.country.code;
+    const countryName = formGroup.value.country.name;
+
+    this.utilityService.getStates(countryCode).subscribe(
+      data => {
+        if( formGroupName === 'shippingAddress'){
+          this.shippingAddressStates = data;
+        }
+        else{
+          this.billingAddressStates = data;
+        }
       }
     )
   }

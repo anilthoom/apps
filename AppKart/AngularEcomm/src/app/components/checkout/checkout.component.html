@@ -46,7 +46,7 @@
                         </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select formControlName="country">
+                                <select formControlName="country" (change)="getStates('shippingAddress')">
                                     <option *ngFor="let theContry of countries" [ngValue]="theContry">
                                         {{ theContry.name }}
                                     </option>
