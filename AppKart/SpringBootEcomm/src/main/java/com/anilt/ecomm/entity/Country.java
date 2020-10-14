@@ -1,5 +1,6 @@
 package com.anilt.ecomm.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,5 +25,6 @@ public class Country {
 
     // One to many with Sates
     @OneToMany(mappedBy = "country")
+    @JsonIgnore
     private List<State> states;
 }
