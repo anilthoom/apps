@@ -20,6 +20,6 @@ public class State {
     private String name;
 
     @ManyToOne
-    @Column(name = "country_id")
+    @JoinColumn(name = "country_id")
     private Country country;
 }
