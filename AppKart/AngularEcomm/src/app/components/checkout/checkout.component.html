@@ -147,10 +147,10 @@
                                 <input formControlName="zipCode" type="text">
                                 <div *ngIf="shippingAddressZipCode.invalid && (shippingAddressZipCode.dirty || shippingAddressZipCode.touched)" class="alert alert-danger mt-1">
                                     <div *ngIf="shippingAddressZipCode.errors.required || shippingAddressZipCode.errors.notOnlyWhitespace">
-                                        City is required
+                                        Zip code is required
                                     </div>
                                     <div *ngIf="shippingAddressZipCode.errors.minlength">
-                                        City name must be at least 2 chars
+                                        Zip code name must be at least 2 chars
                                     </div>
                                 </div>
                             </div>
