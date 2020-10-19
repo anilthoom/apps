@@ -12,8 +12,9 @@ export class PostCreateComponent implements OnInit {
   ngOnInit(): void {
   }
   
+  newPost = '';
   onAddPost(){
-    alert("Hello")
+    this.newPost = 'New hard coded post...'
   }
 
 }
