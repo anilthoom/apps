@@ -1,4 +1,4 @@
-mat-accordion{
-    width: 80%;
-    margin: auto;
+:host{
+    display: block;
+    margin-top: 1rem;
 }
