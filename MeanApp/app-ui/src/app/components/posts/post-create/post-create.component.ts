@@ -13,8 +13,8 @@ export class PostCreateComponent implements OnInit {
   }
   
   newPost = '';
-  onAddPost(postInput: HTMLTextAreaElement){
-    this.newPost = postInput.value;
+  onAddPost(){
+    this.newPost = "Test";
   }
 
 }
