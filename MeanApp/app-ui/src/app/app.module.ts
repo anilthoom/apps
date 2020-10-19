@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { HeaderComponent } from './components/header/header.component';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
@@ -28,7 +29,8 @@ import { PostListComponent } from './components/posts/post-list/post-list.compon
     MatInputModule,
     MatCardModule,
     MatButtonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
