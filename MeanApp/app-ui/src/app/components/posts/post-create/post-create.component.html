@@ -1,7 +1,9 @@
+<mat-card>
 <mat-form-field>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea cols="30" rows="10" [(ngModel)]="newPost"></textarea>
 </mat-form-field>
-<textarea cols="30" rows="10" [(ngModel)]="newPost"></textarea>
+<button color="primary" mat-raised-button (click)="onAddPost()">Save Post</button>
+</mat-card>
 <hr>
-<button (click)="onAddPost()">Save Post</button>
+
 <p>{{ newPost }}</p>
