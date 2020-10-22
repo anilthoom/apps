@@ -46,7 +46,7 @@ app.get('/api/posts', (req, res, next)=> {
     
     Post.find().then(documents => {
         res.status(200).json({
-            message: 'Posts Fetched Successfully!',
+            message: 'Posts fetched successfully!',
             posts: documents
         });
     });  
