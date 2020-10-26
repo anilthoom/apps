@@ -21,3 +21,8 @@ def player(x, y):
     screen.blit(playerImg, (x, y))
 
 
+running = True
+while running:
+
+    screen.fill((0, 0, 0))
+
