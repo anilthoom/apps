@@ -65,26 +65,3 @@ while running:
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
-
-    # 5 = 5 + -0.1 -> 5 = 5 - 0.1
-    # 5 = 5 + 0.1
-
-    playerX += playerX_change
-    if playerX <= 0:
-        playerX = 0
-    elif playerX >= 736:
-        playerX = 736
-
-    # Enemy Movement
-    for i in range(num_of_enemies):
-        enemyX += enemyX_change
-        if enemyX <= 0:
-            enemyX_change = 4
-            enemyY += enemyY_change
-        elif enemyX >= 736:
-            enemyX_change = -4
-            enemyY += enemyY_change
-
-        #
-
-        enemy(enemyX, enemyY,i)
