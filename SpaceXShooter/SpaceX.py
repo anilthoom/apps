@@ -11,8 +11,10 @@ playerImg = pygame.image.load('player.png')
 playerX = 370
 playerY = 480
 
+
 def player():
     screen.blit(playerImg, (playerX, playerY))
+
 
 # Game loop
 running = True
