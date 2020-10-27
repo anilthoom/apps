@@ -14,6 +14,12 @@ playerX = 370
 playerY = 480
 playerX_change = 0
 
+
+def player(x, y):
+    # Drawing image
+    screen.blit(playerImg, (x, y))
+
+
 # Enemy Image
 enemyImage = pygame.image.load('enemy.png')
 enemyX = random.randint(0, 800)
@@ -23,11 +29,6 @@ enemyX_change = 0
 
 def enemy(x, y):
     screen.blit(enemyImage, (x, y))
-
-
-def player(x, y):
-    # Drawing image
-    screen.blit(playerImg, (x, y))
 
 
 # Game loop
