@@ -12,8 +12,9 @@ playerX = 370
 playerY = 480
 
 
-def player():
-    screen.blit(playerImg, (playerX, playerY))
+def player(x, y):
+    # Drawing image
+    screen.blit(playerImg, (x, y))
 
 
 # Game loop
@@ -26,5 +27,13 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    player()
+        # key strokes logic
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                playerX -= 0.1
+            if event.key == pygame.K_LEFT:
+                playerX += 0.1
+
+
+    player(playerX, playerY)
     pygame.display.update()
