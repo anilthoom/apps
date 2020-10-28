@@ -27,6 +27,9 @@ export class PostListComponent implements OnInit {
     this.postsSub.unsubscribe();
   }
 
+  onDelete(postId: string){
+    this.postsService.deletePost(postId)
+  }
   // posts = [
   //   {title: "First Post", content: "This is the FP Content "},
   //   {title: "Second Post", content: "This is the SP Content "},
