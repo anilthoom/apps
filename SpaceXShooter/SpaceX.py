@@ -35,6 +35,23 @@ def enemy(x, y):
     screen.blit(enemyImage, (x, y))
 
 
+# Bullet Image
+bulletImage = pygame.image.load('images/bullet.png')
+bulletX = 0
+bulletY = 480
+bulletX_change = 0
+bulletY_change = 40
+# ready state - not visible on the screen
+# fire state - bullet is visible and moving
+bullet_state = "ready"
+
+
+def fire_bullet(x, y):
+    global bullet_state
+    bullet_state = "fire"
+    screen.blit(bulletImage, (x + 16, y + 10))
+
+
 # Game loop
 running = True
 while running:
