@@ -52,4 +52,9 @@ app.get('/api/posts', (req, res, next) => {
     });
 });
 
+app.get('/api/posts/:id', (req, res, next) => {
+    console.log(req.params.id);
+    res.status(200).json({ message: "Post deleted!"});
+});
+
 module.exports = app;
