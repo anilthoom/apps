@@ -40,7 +40,7 @@ bulletImage = pygame.image.load('images/bullet.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
-bulletY_change = 40
+bulletY_change = 10
 # ready state - not visible on the screen
 # fire state - bullet is visible and moving
 bullet_state = "ready"
@@ -69,6 +69,8 @@ while running:
                 playerX_change = -5
             if event.key == pygame.K_RIGHT:
                 playerX_change = 5
+            if event.key == pygame.K_SPACE:
+                fire_bullet(playerX, bulletY)
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
@@ -89,6 +91,11 @@ while running:
     elif enemyX >= 736:
         enemyX_change = -3
         enemyY += enemyY_change
+
+    # Bullet movement
+    if bullet_state is "fire":
+        fire_bullet(playerX, bulletY)
+        bulletY -= bulletY_change
 
     player(playerX, playerY)
     enemy(enemyX, enemyY)
