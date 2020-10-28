@@ -28,7 +28,7 @@ export class PostListComponent implements OnInit {
   }
 
   onDelete(postId: string){
-    this.postsService.deletePost(postId)
+    this.postsService.deletePost(postId);
   }
   // posts = [
   //   {title: "First Post", content: "This is the FP Content "},
