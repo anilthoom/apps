@@ -6,10 +6,10 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 
 pygame.display.set_caption("SpaceX Fight!!")
-pygame.display.set_icon(pygame.image.load('ufo.png'))
+pygame.display.set_icon(pygame.image.load('images/ufo.png'))
 
 # Player Image
-playerImg = pygame.image.load('player.png')
+playerImg = pygame.image.load('images/player.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
@@ -21,7 +21,7 @@ def player(x, y):
 
 
 # Enemy Image
-enemyImage = pygame.image.load('enemy.png')
+enemyImage = pygame.image.load('images/enemy.png')
 enemyX = random.randint(0, 800)
 enemyY = random.randint(50, 150)
 enemyX_change = 0.2
