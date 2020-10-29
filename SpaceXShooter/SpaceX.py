@@ -88,16 +88,21 @@ while running:
     screen.fill((0, 0, 0))
     # Background image
     screen.blit(background, (0, 0))
+
+    # Close button click
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
         # key strokes logic
         if event.type == pygame.KEYDOWN:
+            # Player movement to left
             if event.key == pygame.K_LEFT:
                 playerX_change = -5
+            # Player movement to right
             if event.key == pygame.K_RIGHT:
                 playerX_change = 5
+            # Firing bullets
             if event.key == pygame.K_SPACE:
                 if bullet_state == "ready":
                     bulletX = playerX
