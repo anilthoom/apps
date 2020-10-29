@@ -7,7 +7,7 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 
 # Background
-background = pygame.image.load('images/155.jpg')
+background = pygame.image.load('images/background.png')
 
 pygame.display.set_caption("SpaceX Fight!!")
 pygame.display.set_icon(pygame.image.load('images/ufo.png'))
@@ -135,7 +135,6 @@ while running:
             bulletY = 480
             bullet_state = "ready"
             score += 1
-            print(score)
             enemyX[i] = random.randint(0, 735)
             enemyY[i] = random.randint(50, 150)
         enemy(enemyX[i], enemyY[i], i)
