@@ -1,6 +1,7 @@
 import pygame
 import random
 import math
+from pygame import mixer
 
 pygame.init()
 
@@ -8,6 +9,10 @@ screen = pygame.display.set_mode((800, 600))
 
 # Background
 background = pygame.image.load('images/155.png')
+
+# Background sound
+mixer.music.load('sounds/background.wav')
+mixer.music.play(-1)
 
 pygame.display.set_caption("SpaceX Fight!!")
 pygame.display.set_icon(pygame.image.load('images/ufo.png'))
@@ -20,8 +25,8 @@ testY = 10
 
 
 def printScore(x, y):
-    sc = font.render('Score: ' + str(score), True, (255, 255, 255))
-    screen.blit(sc, (x, y))
+    score_text = font.render('Score: ' + str(score), True, (255, 255, 255))
+    screen.blit(score_text, (x, y))
 
 
 # Player Image
@@ -66,11 +71,15 @@ bulletY_change = 10
 # fire state - bullet is visible and moving
 bullet_state = "ready"
 
+# Loading bullet fire image
+bulletSound = mixer.Sound('sounds/laser.wav')
+
 
 def fire_bullet(x, y):
     global bullet_state
     bullet_state = "fire"
     screen.blit(bulletImage, (x + 16, y + 10))
+    bulletSound.play()
 
 
 def isCollision(enemyX, enemyY, bulletX, bulletY):
