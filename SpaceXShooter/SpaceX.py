@@ -89,6 +89,11 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
     else:
         return False
 
+gameOverFont = pygame.font.Font('freesansbold.ttf', 70)
+def gameOverText():
+    game_over_text = gameOverFont.render('Game Over', True, (255, 0, 0))
+    screen.blit(game_over_text, (200, 250))
+
 
 # Game loop
 running = True
@@ -130,6 +135,13 @@ while running:
 
     # Enemy movement
     for i in range(num_of_enemies):
+        # IF Game over
+        if enemyY[i] > 440:
+            for j in range(num_of_enemies):
+                enemyY[j] = 4000
+            gameOverText()
+            break
+
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
             enemyX_change[i] = 3
@@ -141,6 +153,9 @@ while running:
         # Collision check
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
+            # Loading bullet fire image
+            explosion_sound = mixer.Sound('sounds/explosion.wav')
+            explosion_sound.play()
             bulletY = 480
             bullet_state = "ready"
             score += 1
