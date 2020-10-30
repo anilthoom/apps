@@ -7,7 +7,7 @@ pygame.init()
 screen = pygame.display.set_mode((800, 600))
 
 # Background
-background = pygame.image.load('images/background.png')
+background = pygame.image.load('images/155.png')
 
 pygame.display.set_caption("SpaceX Fight!!")
 pygame.display.set_icon(pygame.image.load('images/ufo.png'))
