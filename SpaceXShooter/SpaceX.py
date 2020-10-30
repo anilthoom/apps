@@ -89,7 +89,10 @@ def isCollision(enemyX, enemyY, bulletX, bulletY):
     else:
         return False
 
+
 gameOverFont = pygame.font.Font('freesansbold.ttf', 70)
+
+
 def gameOverText():
     game_over_text = gameOverFont.render('Game Over', True, (255, 0, 0))
     screen.blit(game_over_text, (200, 250))
