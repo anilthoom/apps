@@ -24,6 +24,17 @@ def printScore(x, y):
     screen.blit(sc, (x, y))
 
 
+# Game over
+font_game = pygame.font.Font('freesansbold.ttf', 32)
+gameX = 10
+gameY = 10
+
+
+def printgameover(x, y):
+    game = font.render('Oh no you lost: ', True, (255, 255, 255))
+    screen.blit(game, (x, y))
+
+
 # Player Image
 playerImg = pygame.image.load('images/player.png')
 playerX = 370
@@ -137,6 +148,9 @@ while running:
             score += 1
             enemyX[i] = random.randint(0, 735)
             enemyY[i] = random.randint(50, 150)
+            if enemyY == 120:
+                screen.blit(printgameover(gameX, gameY))
+
         enemy(enemyX[i], enemyY[i], i)
     # Bullet movement
     if bulletY <= 0:
@@ -149,3 +163,4 @@ while running:
     player(playerX, playerY)
     printScore(textX, testY)
     pygame.display.update()
+    printgameover(gameX,gameY)
