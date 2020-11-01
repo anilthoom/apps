@@ -19,13 +19,14 @@ pygame.display.set_icon(pygame.image.load('images/ufo.png'))
 
 # Score
 score = 0
+total_bullets_used = 0
 font = pygame.font.Font('freesansbold.ttf', 32)
 textX = 10
 testY = 10
 
 
 def printScore(x, y):
-    score_text = font.render('Score: ' + str(score), True, (255, 255, 255))
+    score_text = font.render('Score: ' + str(score) + '/' + str(total_bullets_used), True, (255, 255, 255))
     screen.blit(score_text, (x, y))
 
 
@@ -124,6 +125,7 @@ while running:
                 if bullet_state == "ready":
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
+                    total_bullets_used += 1
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
