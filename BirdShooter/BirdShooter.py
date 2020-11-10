@@ -24,6 +24,7 @@ def doveTravel(x, y, bird):
     screen.blit(bird, (x, y))
 
 
+# Running the game window
 running = True
 while running:
     screen.blit(backgroundImage, (0, 0))
