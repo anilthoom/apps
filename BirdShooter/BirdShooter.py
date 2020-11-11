@@ -23,6 +23,8 @@ doveL2RImageY_change = 0
 def doveTravel(x, y, bird):
     screen.blit(bird, (x, y))
 
+def displayTargetAtMouseCursor():
+    print(pygame.mouse.get_pos())
 
 # Running the game window
 done = False
@@ -42,6 +44,7 @@ while not done:
         doveL2RImageX = 0
     doveL2RImageX += doveL2RImageX_change
     doveTravel(doveL2RImageX, 210, doveL2RImage)
+
 
     # To display the background image and screen update
     pygame.display.flip()
