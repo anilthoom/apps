@@ -34,12 +34,20 @@ def displayTargetAtMouseCursor():
 
 # Running the game window
 done = False
+
+
+def fireTheBullet():
+    pygame.mouse.get_pos()
+
+
 while not done:
     screen.blit(backgroundImage, (0, 0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            fireTheBullet()
 
     if doveR2LImageX <= 0:
         doveR2LImageX = 780
