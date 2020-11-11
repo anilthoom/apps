@@ -1,5 +1,6 @@
 import pygame
 from pygame import mixer
+import math
 
 pygame.init()
 
@@ -30,8 +31,16 @@ aimImage = pygame.image.load("images/aim32.png")
 
 def displayTargetAtMouseCursor():
     screen.blit(aimImage, pygame.mouse.get_pos())
+    curPos = pygame.mouse.get_pos()
+    print(curPos)
     pygame.mouse.set_visible(False)
 
+def isCollision(birdX, birdY, bulletX, bulletY):
+    distance = math.sqrt((math.pow(birdX - bulletX, 2)) + (math.pow(birdY - bulletY, 2)))
+    if distance < 27:
+        return True
+    else:
+        return False
 
 # Running the game window
 done = False
