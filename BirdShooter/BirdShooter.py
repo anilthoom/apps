@@ -1,4 +1,5 @@
 import pygame
+from pygame import mixer
 
 pygame.init()
 
@@ -35,9 +36,12 @@ def displayTargetAtMouseCursor():
 # Running the game window
 done = False
 
+bulletSound = mixer.Sound('sounds/bullet_fire.wav')
+
 
 def fireTheBullet():
     pygame.mouse.get_pos()
+    bulletSound.play()
 
 
 while not done:
