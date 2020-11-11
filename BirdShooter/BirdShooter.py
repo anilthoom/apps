@@ -31,7 +31,6 @@ aimImage = pygame.image.load("images/aim32.png")
 
 def displayTargetAtMouseCursor():
     screen.blit(aimImage, pygame.mouse.get_pos())
-    x, y = map(str, pygame.mouse.get_pos())
 
     pygame.mouse.set_visible(False)
 
@@ -51,18 +50,11 @@ bulletSound = mixer.Sound('sounds/bullet_fire.wav')
 
 
 def fireTheBullet():
-    pygame.mouse.get_pos()
     bulletSound.play()
 
 
 while not done:
     screen.blit(backgroundImage, (0, 0))
-
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            fireTheBullet()
 
     if doveR2LImageX <= 0:
         doveR2LImageX = 780
@@ -73,6 +65,16 @@ while not done:
         doveL2RImageX = 0
     doveL2RImageX += doveL2RImageX_change
     doveTravel(doveL2RImageX, 210, doveL2RImage)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            fireTheBullet()
+            x, y = map(str, pygame.mouse.get_pos())
+            isCollision(doveR2LImageX, 180, x, y)
+            isCollision(doveL2RImageX, 210, x, y)
+
 
     displayTargetAtMouseCursor()
     # To display the background image and screen update
