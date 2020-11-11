@@ -31,8 +31,8 @@ aimImage = pygame.image.load("images/aim32.png")
 
 def displayTargetAtMouseCursor():
     screen.blit(aimImage, pygame.mouse.get_pos())
-    curPos = pygame.mouse.get_pos()
-    print(curPos)
+    x, y = map(str, pygame.mouse.get_pos())
+
     pygame.mouse.set_visible(False)
 
 def isCollision(birdX, birdY, bulletX, bulletY):
