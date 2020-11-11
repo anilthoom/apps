@@ -25,13 +25,13 @@ def doveTravel(x, y, bird):
 
 
 # Running the game window
-running = True
-while running:
+done = False
+while not done:
     screen.blit(backgroundImage, (0, 0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            running = False
+            done = True
 
     if doveR2LImageX <= 0:
         doveR2LImageX = 780
@@ -44,4 +44,4 @@ while running:
     doveTravel(doveL2RImageX, 210, doveL2RImage)
 
     # To display the background image and screen update
-    pygame.display.update()
+    pygame.display.flip()
