@@ -10,9 +10,9 @@ backgroundImage = pygame.image.load("images/background.jpg")
 # Dove right to left image
 doveR2LImage = pygame.image.load("images/dove32R2L.png")
 doveR2LImageX = 780
-doveR2LImageY = 480
+doveR2LImageY = 180
 doveR2LImageX_change = 0.3
-doveR2LImageY_change = 0
+doveR2LImageY_change = 0.5
 
 # Dove right to left image
 doveL2RImage = pygame.image.load("images/dove32L2R.png")
@@ -23,6 +23,10 @@ doveL2RImageY_change = 0.5
 
 
 def doveTravel(x, y, bird):
+    screen.blit(bird, (x, y))
+
+
+def doveDead(x, y, bird):
     screen.blit(bird, (x, y))
 
 
@@ -54,17 +58,8 @@ def fireTheBullet():
 
 while not done:
     screen.blit(backgroundImage, (0, 0))
-
-    if doveR2LImageX <= 0:
-        doveR2LImageX = 780
-    doveR2LImageX -= doveR2LImageX_change
-    doveTravel(doveR2LImageX, 180, doveR2LImage)
-
-    if doveL2RImageX >= 780:
-        doveL2RImageX = 0
-    doveL2RImageX += doveL2RImageX_change
-    doveTravel(doveL2RImageX, 210, doveL2RImage)
-
+    collidedL2R = False
+    collidedR2L = False
     for event in pygame.event.get():
         collidedL2R = False
         if event.type == pygame.QUIT:
@@ -74,13 +69,21 @@ while not done:
             x, y = map(float, pygame.mouse.get_pos())
             collidedR2L = isCollision(doveR2LImageX, 180, x, y)
             collidedL2R = isCollision(doveL2RImageX, 210, x, y)
-#            print("DEAD? ",  collidedR2L)
-#            print("DEAD? ", collidedL2R)
 
-        if collidedL2R:
-            doveL2RImageY -= doveL2RImageY_change
-            print(doveL2RImageY)
-            doveTravel(doveL2RImageX, doveL2RImageY, doveL2RImage)
+    if doveR2LImageX <= 0:
+        doveR2LImageX = 780
+
+    if collidedR2L:
+        doveR2LImageY += doveR2LImageY_change
+    else:
+        doveR2LImageX -= doveR2LImageX_change
+    print(doveR2LImageY)
+    doveTravel(doveR2LImageX, doveR2LImageY, doveR2LImage)
+
+    if doveL2RImageX >= 780:
+        doveL2RImageX = 0
+    doveL2RImageX += doveL2RImageX_change
+    doveTravel(doveL2RImageX, 210, doveL2RImage)
 
     displayTargetAtMouseCursor()
     # To display the background image and screen update
