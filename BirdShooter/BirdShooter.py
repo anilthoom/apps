@@ -37,7 +37,7 @@ def displayTargetAtMouseCursor():
 
 def isCollision(birdX, birdY, bulletX, bulletY):
     distance = math.sqrt((math.pow(birdX - bulletX, 2)) + (math.pow(birdY - bulletY, 2)))
-    if distance < 27:
+    if distance < 17:
         return True
     else:
         return False
@@ -71,10 +71,11 @@ while not done:
             done = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
             fireTheBullet()
-            x, y = map(str, pygame.mouse.get_pos())
-            isCollision(doveR2LImageX, 180, x, y)
-            isCollision(doveL2RImageX, 210, x, y)
-
+            x, y = map(float, pygame.mouse.get_pos())
+            collidedR2L = isCollision(doveR2LImageX, 180, x, y)
+            collidedL2R = isCollision(doveL2RImageX, 210, x, y)
+            print("DEAD? ",  collidedR2L)
+            print("DEAD? ", collidedL2R)
 
     displayTargetAtMouseCursor()
     # To display the background image and screen update
