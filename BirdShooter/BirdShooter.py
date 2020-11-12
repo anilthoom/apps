@@ -79,6 +79,7 @@ while not done:
         collidedR2L = False
     if collidedR2L:
         doveR2LImageY += doveR2LImageY_change
+        mixer.Sound('sounds/screem1.wav').play()
     else:
         doveR2LImageX -= doveR2LImageX_change
     print(doveR2LImageY)
