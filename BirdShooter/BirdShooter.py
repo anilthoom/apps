@@ -56,10 +56,11 @@ def fireTheBullet():
     bulletSound.play()
 
 
+collidedL2R = False
+collidedR2L = False
+
 while not done:
     screen.blit(backgroundImage, (0, 0))
-    collidedL2R = False
-    collidedR2L = False
     for event in pygame.event.get():
         collidedL2R = False
         if event.type == pygame.QUIT:
@@ -72,7 +73,10 @@ while not done:
 
     if doveR2LImageX <= 0:
         doveR2LImageX = 780
-
+    if doveR2LImageY >=600:
+        doveR2LImageY = 180
+        doveR2LImageX = 780
+        collidedR2L = False
     if collidedR2L:
         doveR2LImageY += doveR2LImageY_change
     else:
@@ -82,6 +86,9 @@ while not done:
 
     if doveL2RImageX >= 780:
         doveL2RImageX = 0
+    if doveL2RImageY >= 600:
+        doveL2RImageY = 210
+
     doveL2RImageX += doveL2RImageX_change
     doveTravel(doveL2RImageX, 210, doveL2RImage)
 
