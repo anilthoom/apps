@@ -62,36 +62,45 @@ collidedR2L = False
 while not done:
     screen.blit(backgroundImage, (0, 0))
     for event in pygame.event.get():
-        collidedL2R = False
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
             fireTheBullet()
             x, y = map(float, pygame.mouse.get_pos())
-            collidedR2L = isCollision(doveR2LImageX, 180, x, y)
-            collidedL2R = isCollision(doveL2RImageX, 210, x, y)
+            if not collidedR2L:
+                collidedR2L = isCollision(doveR2LImageX, 180, x, y)
+            if not collidedL2R:
+                collidedL2R = isCollision(doveL2RImageX, 210, x, y)
 
     if doveR2LImageX <= 0:
         doveR2LImageX = 780
-    if doveR2LImageY >=600:
+    if doveR2LImageY >= 600:
         doveR2LImageY = 180
         doveR2LImageX = 780
         collidedR2L = False
+
     if collidedR2L:
         doveR2LImageY += doveR2LImageY_change
         mixer.Sound('sounds/screem1.wav').play()
     else:
         doveR2LImageX -= doveR2LImageX_change
-    print(doveR2LImageY)
+
     doveTravel(doveR2LImageX, doveR2LImageY, doveR2LImage)
 
     if doveL2RImageX >= 780:
         doveL2RImageX = 0
     if doveL2RImageY >= 600:
         doveL2RImageY = 210
+        doveL2RImageX = 0
+        collidedL2R = False
 
-    doveL2RImageX += doveL2RImageX_change
-    doveTravel(doveL2RImageX, 210, doveL2RImage)
+    if collidedL2R:
+        doveL2RImageY += doveL2RImageY_change
+        mixer.Sound('sounds/screem1.wav').play()
+    else:
+        doveL2RImageX += doveL2RImageX_change
+
+    doveTravel(doveL2RImageX, doveL2RImageY, doveL2RImage)
 
     displayTargetAtMouseCursor()
     # To display the background image and screen update
