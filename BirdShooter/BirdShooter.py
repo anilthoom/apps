@@ -72,6 +72,7 @@ while not done:
             if not collidedL2R:
                 collidedL2R = isCollision(doveL2RImageX, 210, x, y)
 
+    # Need to do refactor!!!
     if doveR2LImageX <= 0:
         doveR2LImageX = 780
     if doveR2LImageY >= 600:
