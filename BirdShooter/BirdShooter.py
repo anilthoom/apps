@@ -17,9 +17,9 @@ doveR2LImageY_change = 0
 # Dove right to left image
 doveL2RImage = pygame.image.load("images/dove32L2R.png")
 doveL2RImageX = 0
-doveL2RImageY = 450
+doveL2RImageY = 210
 doveL2RImageX_change = 0.2
-doveL2RImageY_change = 0
+doveL2RImageY_change = 0.5
 
 
 def doveTravel(x, y, bird):
@@ -31,7 +31,6 @@ aimImage = pygame.image.load("images/aim32.png")
 
 def displayTargetAtMouseCursor():
     screen.blit(aimImage, pygame.mouse.get_pos())
-
     pygame.mouse.set_visible(False)
 
 
@@ -67,6 +66,7 @@ while not done:
     doveTravel(doveL2RImageX, 210, doveL2RImage)
 
     for event in pygame.event.get():
+        collidedL2R = False
         if event.type == pygame.QUIT:
             done = True
         elif event.type == pygame.MOUSEBUTTONDOWN:
@@ -74,8 +74,13 @@ while not done:
             x, y = map(float, pygame.mouse.get_pos())
             collidedR2L = isCollision(doveR2LImageX, 180, x, y)
             collidedL2R = isCollision(doveL2RImageX, 210, x, y)
-            print("DEAD? ",  collidedR2L)
-            print("DEAD? ", collidedL2R)
+#            print("DEAD? ",  collidedR2L)
+#            print("DEAD? ", collidedL2R)
+
+        if collidedL2R:
+            doveL2RImageY -= doveL2RImageY_change
+            print(doveL2RImageY)
+            doveTravel(doveL2RImageX, doveL2RImageY, doveL2RImage)
 
     displayTargetAtMouseCursor()
     # To display the background image and screen update
