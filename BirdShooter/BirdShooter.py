@@ -11,15 +11,15 @@ backgroundImage = pygame.image.load("images/background.jpg")
 doveR2LImage = pygame.image.load("images/dove32R2L.png")
 doveR2LImageX = 780
 doveR2LImageY = 180
-doveR2LImageX_change = 0.3
-doveR2LImageY_change = 0.5
+doveR2LImageX_change = 1
+doveR2LImageY_change = 1
 
 # Dove right to left image
 doveL2RImage = pygame.image.load("images/dove32L2R.png")
 doveL2RImageX = 0
 doveL2RImageY = 210
-doveL2RImageX_change = 0.2
-doveL2RImageY_change = 0.5
+doveL2RImageX_change = 0.7
+doveL2RImageY_change = 1
 
 
 def doveTravel(x, y, bird):
