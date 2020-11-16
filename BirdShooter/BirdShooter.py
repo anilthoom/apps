@@ -101,16 +101,6 @@ while not done:
         doveL2RImageX = 0
         collidedL2R = False
 
-    if collidedR2L:
-        doveR2LImageY += doveR2LImageY_change
-        mixer.Sound('sounds/screem1.wav').play()
-    if doveR2LImageX >= 780:
-        doveR2LImageX = 0
-    if doveR2LImageY >= 600:
-        doveR2LImageY = 210
-        doveR2LImageY = 0
-        collidedL2R = False
-
     if collidedL2R:
         doveL2RImageY += doveL2RImageY_change
         mixer.Sound('sounds/screem1.wav').play()
