@@ -31,6 +31,7 @@ doveL2RImageY_change = 1
 def doveTravel(x, y, bird):
     screen.blit(bird, (x, y))
 
+
 # Need to handle for all types of birds
 def doveDead(x, y, bird):
     screen.blit(bird, (x, y))
