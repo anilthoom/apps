@@ -58,7 +58,7 @@ def isCollision(birdX, birdY, bulletX, bulletY):
 
 
 # Running the game window
-done = False
+done = True
 
 bulletSound = mixer.Sound('sounds/bullet_fire.wav')
 
@@ -70,11 +70,11 @@ def fireTheBullet():
 collidedL2R = False
 collidedR2L = False
 
-while not done:
+while done:
     screen.blit(backgroundImage, (0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            done = True
+            done = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
             fireTheBullet()
             x, y = map(float, pygame.mouse.get_pos())
