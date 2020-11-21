@@ -23,6 +23,7 @@ doveL2RImageX = 0
 doveL2RImageY = 210
 doveL2RImageX_change = 0.7
 doveL2RImageY_change = 1
+
 # Score
 score = 0
 
