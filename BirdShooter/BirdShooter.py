@@ -97,6 +97,7 @@ while done:
         score += 1
         print(score)
         mixer.Sound('sounds/screem1.wav').play()
+
     else:
         doveR2LImageX -= doveR2LImageX_change
 
