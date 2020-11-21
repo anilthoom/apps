@@ -25,6 +25,8 @@ doveL2RImageX_change = 0.7
 doveL2RImageY_change = 1
 # Score
 score = 0
+
+
 def doveTravel(x, y, bird):
     screen.blit(bird, (x, y))
 
