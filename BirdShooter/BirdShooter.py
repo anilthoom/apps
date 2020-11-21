@@ -11,6 +11,7 @@ backgroundImage = pygame.image.load("images/background.jpg")
 icon = pygame.image.load("images\Icon.png")
 pygame.display.set_caption("Shoot the bird")
 pygame.display.set_icon(icon)
+
 # Dove right to left image
 doveR2LImage = pygame.image.load("images/dove32R2L.png")
 doveR2LImageX = 780
