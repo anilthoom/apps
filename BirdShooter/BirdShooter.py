@@ -27,6 +27,9 @@ doveL2RImageY = 210
 doveL2RImageX_change = 0.7
 doveL2RImageY_change = 1
 
+# Score
+score = 0
+
 
 def doveTravel(x, y, bird):
     screen.blit(bird, (x, y))
@@ -83,6 +86,7 @@ while not done:
     # Need to do refactor!!!
     if doveR2LImageX <= 0:
         doveR2LImageX = 780
+
     if doveR2LImageY >= 600:
         doveR2LImageY = 180
         doveR2LImageX = 780
@@ -90,6 +94,8 @@ while not done:
 
     if collidedR2L:
         doveR2LImageY += doveR2LImageY_change
+        score += 1
+        print(score)
         mixer.Sound('sounds/screem1.wav').play()
     else:
         doveR2LImageX -= doveR2LImageX_change
@@ -105,6 +111,8 @@ while not done:
 
     if collidedL2R:
         doveL2RImageY += doveL2RImageY_change
+        score += 1
+        print(score)
         mixer.Sound('sounds/screem1.wav').play()
     else:
         doveL2RImageX += doveL2RImageX_change
@@ -112,5 +120,6 @@ while not done:
     doveTravel(doveL2RImageX, doveL2RImageY, doveL2RImage)
 
     displayTargetAtMouseCursor()
+
     # To display the background image and screen update
     pygame.display.flip()
