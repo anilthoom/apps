@@ -2,9 +2,6 @@
 import pygame
 from pygame import mixer
 import math
-from pygame import draw_py
-
-
 pygame.init()
 
 screen = pygame.display.set_mode((800, 600))
