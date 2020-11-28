@@ -73,7 +73,7 @@ while done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = False
-        elif event.type == pygame.MOUSEBUTTONDOWN:
+        elif event.type == pygame.MOUSEMOTION:
             fireTheBullet()
             x, y = map(float, pygame.mouse.get_pos())
             if not collidedR2L:
