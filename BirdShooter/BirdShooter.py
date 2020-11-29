@@ -2,6 +2,7 @@
 import pygame
 from pygame import mixer
 import math
+
 pygame.init()
 
 screen = pygame.display.set_mode((800, 600))
@@ -12,9 +13,9 @@ icon = pygame.image.load("images\Icon.png")
 pygame.display.set_caption("Shoot the bird")
 pygame.display.set_icon(icon)
 
+
 def flyBird():
     print("Yet... to fly...")
-
 
 
 # Dove right to left image
