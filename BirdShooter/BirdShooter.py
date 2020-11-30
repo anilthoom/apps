@@ -13,7 +13,7 @@ icon = pygame.image.load("images\Icon.png")
 pygame.display.set_caption("Shoot the bird")
 pygame.display.set_icon(icon)
 
-
+# Need to add generic logic for all the birds to fly.
 def flyBird():
     print("Yet... to fly...")
 
