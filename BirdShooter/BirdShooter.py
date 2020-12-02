@@ -15,7 +15,7 @@ pygame.display.set_icon(icon)
 
 
 # Need to add generic logic for all the birds to fly.
-def flyBird():
+def flyBird(birdImage, direction):
     print("Yet... to fly...")
 
 
