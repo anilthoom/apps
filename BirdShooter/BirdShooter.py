@@ -128,4 +128,4 @@ while done:
     displayTargetAtMouseCursor()
 
     # To display the background image and screen update
-    pygame.display.u()
+    pygame.display.up()
