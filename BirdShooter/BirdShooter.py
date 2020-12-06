@@ -26,6 +26,24 @@ doveR2LImageX_change = 1
 doveR2LImageY_change = 1
 
 
+# Dove right to left image
+doveL2RImage = pygame.image.load("images/dove32L2R.png")
+doveL2RImageX = 0
+doveL2RImageY = 210
+doveL2RImageX_change = 0.7
+doveL2RImageY_change = 1
+
+# Score
+score = 0
+
+
+def doveTravel(x, y, bird):
+    screen.blit(bird, (x, y))
+
+
+# Need to handle for all types of birds
+def doveDead(x, y, bird):
+    screen.blit(bird, (x, y))
 
 
 aimImage = pygame.image.load("images/aim32.png")
