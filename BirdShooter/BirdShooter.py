@@ -15,7 +15,7 @@ pygame.display.set_icon(icon)
 
 
 # Need to add generic logic for all the birds to fly.
-def flyBird(birdImage, direction, xAxis, yAxis):
+def flyBird(birdImage, direction, xAxis, yAxis, speed):
     print("Yet... to fly...")
 
 # Dove right to left image
