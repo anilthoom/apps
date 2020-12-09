@@ -1,4 +1,3 @@
-
 import pygame
 from pygame import mixer
 import math
@@ -18,13 +17,13 @@ pygame.display.set_icon(icon)
 def flyBird(birdImage, direction, xAxis, yAxis, speed):
     print("Yet... to fly...")
 
+
 # Dove right to left image
 doveR2LImage = pygame.image.load("images/dove32R2L.png")
 doveR2LImageX = 780
 doveR2LImageY = 180
 doveR2LImageX_change = 1
 doveR2LImageY_change = 1
-
 
 # Dove right to left image
 doveL2RImage = pygame.image.load("images/dove32L2R.png")
