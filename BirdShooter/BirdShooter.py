@@ -108,6 +108,7 @@ while done:
 
     doveTravel(doveR2LImageX, doveR2LImageY, doveR2LImage)
 
+
     if doveL2RImageX >= 780:
         doveL2RImageX = 0
     if doveL2RImageY >= 600:
@@ -128,4 +129,4 @@ while done:
     displayTargetAtMouseCursor()
 
     # To display the background image and screen update
-    pygame.display.update()
+    pygame.display.update()                     
