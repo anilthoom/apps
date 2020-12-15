@@ -108,8 +108,7 @@ while done:
 
     doveTravel(doveR2LImageX, doveR2LImageY, doveR2LImage)
 
-
-    #Need to relook
+    # Need to relook
     if doveL2RImageX >= 780:
         doveL2RImageX = 0
     if doveL2RImageY >= 600:
