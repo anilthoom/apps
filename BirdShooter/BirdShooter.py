@@ -116,6 +116,7 @@ while done:
         doveL2RImageX = 0
         collidedL2R = False
 
+
     if collidedL2R:
         doveL2RImageY += doveL2RImageY_change
         score += 1
