@@ -51,7 +51,7 @@ aimImage = pygame.image.load("images/aim32.png")
 
 def displayTargetAtMouseCursor():
     screen.blit(aimImage, pygame.mouse.get_pos())
-    pygame.mouse.set_visible(True)
+    pygame.mouse.set_visible(False)
 
 
 # Collision logic goes here...
