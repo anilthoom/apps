@@ -54,6 +54,7 @@ def displayTargetAtMouseCursor():
     pygame.mouse.set_visible(False)
 
 
+
 # Collision logic goes here...
 def isCollision(birdX, birdY, bulletX, bulletY):
     distance = math.sqrt((math.pow(birdX - bulletX, 2)) + (math.pow(birdY - bulletY, 2)))
