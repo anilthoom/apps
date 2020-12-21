@@ -77,6 +77,7 @@ collidedL2R = False
 collidedR2L = False
 
 
+
 while done:
     screen.blit(backgroundImage, (0, 0))
     for event in pygame.event.get():
