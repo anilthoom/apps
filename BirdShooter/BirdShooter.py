@@ -101,13 +101,14 @@ while done:
     if collidedR2L:
         doveR2LImageY += doveR2LImageY_change
         score += 1
-        print(score)
+        print("R @ L : ", score)
         mixer.Sound('sounds/screem1.wav').play()
 
     else:
         doveR2LImageX -= doveR2LImageX_change
 
     doveTravel(doveR2LImageX, doveR2LImageY, doveR2LImage)
+
 
     # Need to re-look
     if doveL2RImageX >= 780:
