@@ -63,8 +63,6 @@ def isCollision(birdX, birdY, bulletX, bulletY):
         return False
 
 
-
-
 # Running the game window
 done = True
 bulletSound = mixer.Sound('sounds/bullet_fire.wav')
@@ -76,7 +74,6 @@ def fireTheBullet():
 
 collidedL2R = False
 collidedR2L = False
-
 
 # Loop to game
 while done:
