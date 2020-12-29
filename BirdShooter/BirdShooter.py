@@ -72,6 +72,7 @@ def fireTheBullet():
     bulletSound.play()
 
 
+
 collidedL2R = False
 collidedR2L = False
 
