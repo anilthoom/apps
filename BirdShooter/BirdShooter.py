@@ -1,3 +1,4 @@
+_authur_ = 'Authur = Shrihan Chandra With Anil Kumar '
 import pygame
 from pygame import mixer
 import math
@@ -132,3 +133,4 @@ while done:
 
     # To display the background image and screen update
     pygame.display.update()
+print(_authur_)
