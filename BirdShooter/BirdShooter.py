@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((800, 600))
 backgroundImage = pygame.image.load("images/background.jpg")
 
 # Comment for
-icon = pygame.image.load("images\Icon.png")
+icon = pygame.image.load("images \Icon.png")
 pygame.display.set_caption("Shoot the bird")
 pygame.display.set_icon(icon)
 
