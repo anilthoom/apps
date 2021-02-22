@@ -1,4 +1,4 @@
-_authur_ = 'Authur = Shrihan Chandra With Anil Kumar '
+_authur_ = 'Authur = Shrihan Chandra With Anil Kumar'
 import pygame
 from pygame import mixer
 import math
