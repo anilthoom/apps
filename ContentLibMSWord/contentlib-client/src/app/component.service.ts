@@ -11,7 +11,7 @@ export class ComponentService {
 
   constructor(private http: HttpClient) { }
   
-  getComponentLib(id: number): Observable<Object> {
+  getComponentLib(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
   
