@@ -10,25 +10,25 @@ import { Router } from '@angular/router';
 })
 export class CreateComponentlibComponent implements OnInit {
 
-  componentlib: Componentlib = new Componentlib();
+  complib: Componentlib = new Componentlib();
   submitted = false;
 
-  constructor(private componentlibService: ComponentService,
+  constructor(private compService: ComponentService,
     private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  newComponentLib: void {
+  newComponentLib(): void {
     this.submitted = false;
-    this.componentlib = new Componentlib();
+    this.complib = new Componentlib();
   }
 
   save() {
-    this.componentlibService
-    .createComponentlib(this.componentlib).subscribe(data =>{
+    this.compService
+    .createComponentlib(this.complib).subscribe( data => {
       console.log(data)
-      this.componentlib = new Componentlib();
+      this.complib = new Componentlib();
       this.gotoList();
     },
     error => console.log(error));
@@ -38,6 +38,7 @@ export class CreateComponentlibComponent implements OnInit {
     this.submitted = true;
     this.save();
   }
+  
   gotoList(){
     this.router.navigate(['/components'])
   }
