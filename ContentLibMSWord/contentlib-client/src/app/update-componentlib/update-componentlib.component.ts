@@ -13,9 +13,19 @@ export class UpdateComponentlibComponent implements OnInit {
   id: number;
   complib: Componentlib;
 
-  constructor() { }
+  constructor( private route: ActivatedRoute, private router: Router, 
+    private complibService: ComponentService) { }
 
   ngOnInit(): void {
+    this.complib = new Componentlib();
+    
+    this.id = this.route.snapshot.params['id'];
+
+    this.complibService.getComponentLib(this.id)
+      .subscribe( data => {
+        console.log(data)
+        this.complib = data;
+      }, error => console.log(error));
   }
 
 }
