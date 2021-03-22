@@ -1,1 +1,28 @@
 <p>componentlib-list works!</p>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Components Librarary</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Content Text</th>
+            <th>Content HTML</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let component of componentsLib | async">
+            <td>{{component.id}}</td>
+            <td>{{component.contentText}}</td>
+            <td>{{component.contentHTML}}</td>
+            <td><button (click)="deleteComponentLib(component.id)" class="btn btn-danger">Delete</button>
+                <button (click)="componentLibDetails(component.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
