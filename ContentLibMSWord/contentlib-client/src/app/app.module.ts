@@ -7,6 +7,7 @@ import { CreateComponentlibComponent } from './create-componentlib/create-compon
 import { ComponentlibDetailsComponent } from './componentlib-details/componentlib-details.component';
 import { ComponentlibListComponent } from './componentlib-list/componentlib-list.component';
 import { UpdateComponentlibComponent } from './update-componentlib/update-componentlib.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UpdateComponentlibComponent } from './update-componentlib/update-compon
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
