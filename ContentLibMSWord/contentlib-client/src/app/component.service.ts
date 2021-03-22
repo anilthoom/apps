@@ -15,12 +15,12 @@ export class ComponentService {
     return this.http.get(`${this.baseUrl}/${id}`);
   }
   
-  createComponentlib(complib: Componentlib) {
+  createComponentlib(complib: Componentlib): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, complib);
   }
 
-  updateComponentlib(id: number, complib: Componentlib) {
-    throw new Error('Method not implemented.');
+  updateComponentlib(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/${id}`, value);
   }
     
   deleteComponentLib(id: number) {
