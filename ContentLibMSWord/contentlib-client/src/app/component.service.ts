@@ -5,6 +5,9 @@ import { Componentlib } from './componentlib';
   providedIn: 'root'
 })
 export class ComponentService {
+  updateComponentlib(id: number, complib: Componentlib) {
+    throw new Error('Method not implemented.');
+  }
   getComponentLib(id: number) {
     throw new Error('Method not implemented.');
   }
