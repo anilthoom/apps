@@ -11,9 +11,15 @@ import { ComponentlibListComponent } from '../componentlib-list/componentlib-lis
 })
 export class ComponentlibDetailsComponent implements OnInit {
 
-  constructor() { }
+  id: number;
+  complib: Componentlib;
+
+  constructor(private route: ActivatedRoute, private router: Router,
+    private componentlibService: ComponentService) { }
 
   ngOnInit(): void {
+    this.complib = new Componentlib();
+    
   }
 
 }
