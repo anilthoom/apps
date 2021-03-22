@@ -27,7 +27,7 @@ export class ComponentService {
     return this.http.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
   }
 
-  getComponentLibList(): import("rxjs").Observable<import("./componentlib").Componentlib[]> {
-    throw new Error("Method not implemented.");
+  getComponentLibList(): Observable<any> {
+    return this.http.get(`${this.baseUrl}`);
   }
 }
