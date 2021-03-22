@@ -16,7 +16,7 @@ export class ComponentService {
   }
   
   createComponentlib(complib: Componentlib) {
-    throw new Error("Method not implemented.");
+    return this.http.post(`${this.baseUrl}`, complib);
   }
 
   updateComponentlib(id: number, complib: Componentlib) {
