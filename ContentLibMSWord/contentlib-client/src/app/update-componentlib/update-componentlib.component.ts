@@ -28,4 +28,21 @@ export class UpdateComponentlibComponent implements OnInit {
       }, error => console.log(error));
   }
 
+  updateComponentlib(){
+    this.complibService.updateComponentlib(this.id, this.complib)
+    .subscribe( data => {
+      console.log(data);
+      this.complib = new Componentlib();
+      this.gotoList();
+    }, error => console.log(error));
+  }
+
+  onSubmit(){
+    this.updateComponentlib();
+  }
+
+  gotoList(){
+    this.router.navigate(['/components']);
+  }
+
 }
