@@ -1,1 +1,15 @@
-<p>componentlib-details works!</p>
+<h2>Component Library Details</h2> 
+
+<hr/>
+<div *ngIf="complib">
+  <div>
+    <label><b>Content HTML: </b></label> {{complib.contentHTML}}
+  </div>
+  <div>
+    <label><b>Content Text: </b></label> {{complib.contentText}}
+  </div>
+</div>
+
+<br>
+<br>
+<button (click)="list()" class="btn btn-primary">Back to Component Library List</button><br>
