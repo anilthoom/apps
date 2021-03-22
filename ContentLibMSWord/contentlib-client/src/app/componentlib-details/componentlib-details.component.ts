@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Componentlib } from '../componentlib';
+import { ComponentService } from '../component.service';
+import { ComponentlibListComponent } from '../componentlib-list/componentlib-list.component';
 
 @Component({
   selector: 'app-componentlib-details',
