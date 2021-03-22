@@ -1,13 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+
 import { CreateComponentlibComponent } from './create-componentlib/create-componentlib.component';
 import { ComponentlibDetailsComponent } from './componentlib-details/componentlib-details.component';
 import { ComponentlibListComponent } from './componentlib-list/componentlib-list.component';
 import { UpdateComponentlibComponent } from './update-componentlib/update-componentlib.component';
-import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
