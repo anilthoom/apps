@@ -26,7 +26,7 @@ public class ComponentLibController {
         return componentLibraryRepository.findAll();
     }
 
-    @GetMapping("/component/{id}")
+    @GetMapping("/components/{id}")
     public ResponseEntity<ComponentLibrary> getComponentLibraryById(@PathVariable(value = "id") Long componentId)
             throws ResourceNotFoundException {
         ComponentLibrary componentLibrary = componentLibraryRepository.findById(componentId)
