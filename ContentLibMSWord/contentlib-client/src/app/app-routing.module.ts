@@ -7,7 +7,7 @@ import { ComponentlibListComponent } from './componentlib-list/componentlib-list
 import { UpdateComponentlibComponent } from './update-componentlib/update-componentlib.component';
 
 const routes: Routes = [
-  {path: '', redirectTo:'components', pathMatch: 'full'},
+  { path: '', redirectTo: 'components', pathMatch: 'full' },
   { path: 'components', component: ComponentlibListComponent },
   { path: 'add', component: CreateComponentlibComponent },
   { path: 'update/:id', component: UpdateComponentlibComponent },
@@ -15,7 +15,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
