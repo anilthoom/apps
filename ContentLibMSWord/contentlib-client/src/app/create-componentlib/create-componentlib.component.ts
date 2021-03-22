@@ -12,6 +12,7 @@ export class CreateComponentlibComponent implements OnInit {
 
   complib: Componentlib = new Componentlib();
   submitted = false;
+  test: any;
 
   constructor(private compService: ComponentService,
     private router: Router) { }
@@ -34,12 +35,12 @@ export class CreateComponentlibComponent implements OnInit {
     error => console.log(error));
   }
 
-  onsubmit() {
+  onSubmit() {
     this.submitted = true;
     this.save();
   }
   
   gotoList(){
-    this.router.navigate(['/components'])
+    this.router.navigate(['components'])
   }
 }
