@@ -51,10 +51,9 @@ function applyStyle() {
 }
 function applyCustomStyle() {
   Word.run(function (context) {
-
-      // TODO1: Queue commands to apply the custom style.
-
-      return context.sync();
+    var lastParagraph = context.document.body.paragraphs.getLast();
+    lastParagraph.style = "MyCustomStyle";
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
