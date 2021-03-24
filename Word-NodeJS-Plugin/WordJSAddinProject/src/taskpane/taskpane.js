@@ -32,10 +32,9 @@ Office.onReady(info => {
 });
 function insertHTML() {
   Word.run(function (context) {
-
-      // TODO1: Queue commands to insert a string of HTML.
-
-      return context.sync();
+    var blankParagraph = context.document.body.paragraphs.getLast().insertParagraph("", "After");
+    blankParagraph.insertHtml('<p style="font-family: verdana;">Inserted HTML.</p><p>Another paragraph</p>', "End");
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
