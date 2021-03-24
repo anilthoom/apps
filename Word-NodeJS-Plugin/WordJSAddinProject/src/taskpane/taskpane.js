@@ -24,8 +24,23 @@ Office.onReady(info => {
     document.getElementById("change-font").onclick = changeFont;
     document.getElementById("insert-text-into-range").onclick = insertTextIntoRange;
     document.getElementById("insert-text-outside-range").onclick = insertTextBeforeRange;
+    document.getElementById("replace-text").onclick = replaceText;
   }
 });
+function replaceText() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to replace the text.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function insertTextBeforeRange() {
   Word.run(function (context) {
     // Queue commands to insert a new range before the selected range.
