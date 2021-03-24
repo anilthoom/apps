@@ -29,12 +29,10 @@ Office.onReady(info => {
 });
 function replaceText() {
   Word.run(function (context) {
-
     var doc = context.document;
     var originalRange = doc.getSelection();
     originalRange.insertText("many", "Replace");
-
-      return context.sync();
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
