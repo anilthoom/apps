@@ -31,10 +31,8 @@ Office.onReady(info => {
 });
 function insertImage() {
   Word.run(function (context) {
-
-      // TODO1: Queue commands to insert an image.
-
-      return context.sync();
+    context.document.body.insertInlinePictureFromBase64(base64Image, "End");
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
