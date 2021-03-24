@@ -28,8 +28,27 @@ Office.onReady(info => {
     document.getElementById("replace-text").onclick = replaceText;
     document.getElementById("insert-image").onclick = insertImage;
     document.getElementById("insert-html").onclick = insertHTML;
+    document.getElementById("insert-table").onclick = insertTable;
   }
 });
+function insertTable() {
+  Word.run(function (context) {
+  var secondParagraph = context.document.body.paragraphs.getFirst().getNext();
+  var tableData = [
+      ["Name", "ID", "Birth City"],
+      ["Bob", "434", "Chicago"],
+      ["Sue", "719", "Havana"],
+  ];
+  secondParagraph.insertTable(3, 3, "After", tableData);
+  return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function insertHTML() {
   Word.run(function (context) {
     var blankParagraph = context.document.body.paragraphs.getLast().insertParagraph("", "After");
