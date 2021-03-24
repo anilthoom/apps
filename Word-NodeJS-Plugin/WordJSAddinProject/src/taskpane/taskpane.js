@@ -22,8 +22,29 @@ Office.onReady(info => {
     document.getElementById("apply-style").onclick = applyStyle;
     document.getElementById("apply-custom-style").onclick = applyCustomStyle;
     document.getElementById("change-font").onclick = changeFont;
+    document.getElementById("insert-text-into-range").onclick = insertTextIntoRange;
   }
 });
+function insertTextIntoRange() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to insert text into a selected range.
+
+      // TODO2: Load the text of the range and sync so that the
+      //        current range text can be read.
+
+      // TODO3: Queue commands to repeat the text of the original
+      //        range at the end of the document.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function changeFont() {
   Word.run(function (context) {
     var secondParagraph = context.document.body.paragraphs.getFirst().getNext();
