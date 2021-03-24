@@ -12,6 +12,10 @@ import "../../assets/icon-80.png";
 
 Office.onReady(info => {
   if (info.host === Office.HostType.Word) {
+    // Determine if the user's version of Office supports all the Office.js APIs that are used in the tutorial.
+    if (!Office.context.requirements.isSetSupported('WordApi', '1.3')) {
+      console.log('Sorry, Not supported.');
+    }
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
   }
