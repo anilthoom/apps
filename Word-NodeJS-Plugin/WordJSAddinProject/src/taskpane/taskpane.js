@@ -23,6 +23,7 @@ Office.onReady(info => {
     document.getElementById("apply-custom-style").onclick = applyCustomStyle;
     document.getElementById("change-font").onclick = changeFont;
     document.getElementById("insert-text-into-range").onclick = insertTextIntoRange;
+    document.getElementById("insert-text-outside-range").onclick = insertTextBeforeRange;
   }
 });
 function insertTextIntoRange() {
