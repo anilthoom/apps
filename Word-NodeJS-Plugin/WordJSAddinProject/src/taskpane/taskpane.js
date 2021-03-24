@@ -20,6 +20,7 @@ Office.onReady(info => {
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("insert-paragraph").onclick = insertParagraph;
     document.getElementById("apply-style").onclick = applyStyle;
+    document.getElementById("apply-custom-style").onclick = applyCustomStyle;
   }
 });
 function insertParagraph(){
