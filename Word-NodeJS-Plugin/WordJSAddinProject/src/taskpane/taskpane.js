@@ -23,7 +23,8 @@ Office.onReady(info => {
 });
 function insertParagraph(){
   Word.run(function(context){
-    //TODO: Queue commands to insert paragraph in to the document
+    var docBody = context.document.body;
+    docBody.insertParagraph("Anil is THOPE!!!!", "Start");
   })
   .catch(function (error){
     console.log("Error: "+error);
