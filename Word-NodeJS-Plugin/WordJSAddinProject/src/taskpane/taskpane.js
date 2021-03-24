@@ -28,13 +28,17 @@ Office.onReady(info => {
 });
 function insertTextBeforeRange() {
   Word.run(function (context) {
+    // Queue commands to insert a new range before the selected range.
+    var doc = context.document;
+    var originalRange = doc.getSelection();
+    originalRange.insertText("Office 2019, ", "Before");
 
-      // TODO1: Queue commands to insert a new range before the
-      //        selected range.
-
-      // TODO2: Load the text of the original range and sync so that the
-      //        range text can be read and inserted.
-
+    originalRange.load("text");
+    return context.sync()
+       .then(function() {
+        doc.body.insertParagraph("Current text of original range: " + originalRange.text, "End");
+       })
+       .then(context.sync);
   })
   .catch(function (error) {
       console.log("Error: " + error);
