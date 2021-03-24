@@ -25,6 +25,7 @@ function insertParagraph(){
   Word.run(function(context){
     var docBody = context.document.body;
     docBody.insertParagraph("Anil is THOPE!!!!", "Start");
+    return context.sync();
   })
   .catch(function (error){
     console.log("Error: "+error);
