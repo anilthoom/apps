@@ -49,3 +49,17 @@ function applyStyle() {
       }
   });
 }
+function applyCustomStyle() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to apply the custom style.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
