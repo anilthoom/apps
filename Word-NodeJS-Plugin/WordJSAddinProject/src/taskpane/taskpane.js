@@ -66,7 +66,6 @@ function insertTextBeforeRange() {
 }
 function insertTextIntoRange() {
   Word.run(function (context) {
-
       var doc = context.document;
       var originalRange = doc.getSelection();
       originalRange.insertText(" (C2R)", "End");
