@@ -26,6 +26,23 @@ Office.onReady(info => {
     document.getElementById("insert-text-outside-range").onclick = insertTextBeforeRange;
   }
 });
+function insertTextBeforeRange() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to insert a new range before the
+      //        selected range.
+
+      // TODO2: Load the text of the original range and sync so that the
+      //        range text can be read and inserted.
+
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function insertTextIntoRange() {
   Word.run(function (context) {
 
