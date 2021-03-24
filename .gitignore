@@ -33,6 +33,7 @@ ContentLibMSWord/.idea
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/*
+/Word-NodeJS-Plugin/WordJSAddinProject/.vscode
 
 # misc
 /.sass-cache
