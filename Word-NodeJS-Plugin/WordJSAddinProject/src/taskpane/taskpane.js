@@ -26,10 +26,13 @@ Office.onReady(info => {
 });
 function changeFont() {
   Word.run(function (context) {
-
-      // TODO1: Queue commands to apply a different font.
-
-      return context.sync();
+    var secondParagraph = context.document.body.paragraphs.getFirst().getNext();
+    secondParagraph.font.set({
+            name: "Courier New",
+            bold: true,
+            size: 18
+        });
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
