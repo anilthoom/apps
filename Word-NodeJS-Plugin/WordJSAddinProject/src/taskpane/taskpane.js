@@ -27,8 +27,23 @@ Office.onReady(info => {
     document.getElementById("insert-text-outside-range").onclick = insertTextBeforeRange;
     document.getElementById("replace-text").onclick = replaceText;
     document.getElementById("insert-image").onclick = insertImage;
+    document.getElementById("insert-html").onclick = insertHTML;
   }
 });
+function insertHTML() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to insert a string of HTML.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function insertImage() {
   Word.run(function (context) {
     context.document.body.insertInlinePictureFromBase64(base64Image, "End");
