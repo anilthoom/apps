@@ -7,6 +7,7 @@
 import "../../assets/icon-16.png";
 import "../../assets/icon-32.png";
 import "../../assets/icon-80.png";
+import { base64Image } from "../../base64Image";
 
 /* global document, Office, Word */
 
@@ -25,8 +26,23 @@ Office.onReady(info => {
     document.getElementById("insert-text-into-range").onclick = insertTextIntoRange;
     document.getElementById("insert-text-outside-range").onclick = insertTextBeforeRange;
     document.getElementById("replace-text").onclick = replaceText;
+    document.getElementById("insert-image").onclick = insertImage;
   }
 });
+function insertImage() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to insert an image.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function replaceText() {
   Word.run(function (context) {
     var doc = context.document;
