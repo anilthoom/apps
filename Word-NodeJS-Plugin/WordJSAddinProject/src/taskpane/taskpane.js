@@ -37,10 +37,9 @@ function insertParagraph(){
 }
 function applyStyle() {
   Word.run(function (context) {
-
-      // TODO1: Queue commands to style text.
-
-      return context.sync();
+    var firstParagraph = context.document.body.paragraphs.getFirst();
+    firstParagraph.styleBuiltIn = Word.Style.intenseReference;
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
