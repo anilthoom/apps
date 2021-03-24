@@ -45,7 +45,6 @@ function replaceText() {
 }
 function insertTextBeforeRange() {
   Word.run(function (context) {
-    // Queue commands to insert a new range before the selected range.
     var doc = context.document;
     var originalRange = doc.getSelection();
     originalRange.insertText("Office 2019, ", "Before");
