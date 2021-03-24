@@ -21,8 +21,23 @@ Office.onReady(info => {
     document.getElementById("insert-paragraph").onclick = insertParagraph;
     document.getElementById("apply-style").onclick = applyStyle;
     document.getElementById("apply-custom-style").onclick = applyCustomStyle;
+    document.getElementById("change-font").onclick = changeFont;
   }
 });
+function changeFont() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to apply a different font.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function insertParagraph(){
   Word.run(function(context){
     var docBody = context.document.body;
