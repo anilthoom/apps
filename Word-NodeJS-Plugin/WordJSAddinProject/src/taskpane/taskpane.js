@@ -28,15 +28,26 @@ Office.onReady(info => {
 function insertTextIntoRange() {
   Word.run(function (context) {
 
-      // TODO1: Queue commands to insert text into a selected range.
+    // Queue commands to insert text into a selected range.
+    var doc = context.document;
+    var originalRange = doc.getSelection();
+    originalRange.insertText(" (C2R)", "End");
 
-      // TODO2: Load the text of the range and sync so that the
-      //        current range text can be read.
+    // TODO2: Load the text of the range and sync so that the
+    //        current range text can be read.
+    originalRange.load("text");
+    return context.sync()
+    .then(function() {
+      doc.body.insertParagraph("Original range: " + originalRange.text, "End");
+    })
+    // TODO5: Move the final call of context.sync here and ensure
+    //        that it does not run until the insertParagraph has
+    //        been queued.
 
-      // TODO3: Queue commands to repeat the text of the original
-      //        range at the end of the document.
+    // Queue commands to repeat the text of the original range at the end of the document.
+    
 
-      return context.sync();
+    
   })
   .catch(function (error) {
       console.log("Error: " + error);
