@@ -30,7 +30,9 @@ Office.onReady(info => {
 function replaceText() {
   Word.run(function (context) {
 
-      // TODO1: Queue commands to replace the text.
+    var doc = context.document;
+    var originalRange = doc.getSelection();
+    originalRange.insertText("many", "Replace");
 
       return context.sync();
   })
