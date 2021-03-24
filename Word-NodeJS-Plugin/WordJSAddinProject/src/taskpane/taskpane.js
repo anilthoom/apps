@@ -19,6 +19,7 @@ Office.onReady(info => {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("insert-paragraph").onclick = insertParagraph;
+    document.getElementById("apply-style").onclick = applyStyle;
   }
 });
 function insertParagraph(){
