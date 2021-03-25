@@ -63,7 +63,7 @@ function handler() {
   insertHTML();
   console.log("data changed happened");
 }
-function getBinding() {
+/*function getBinding() {
   Office.context.document.bindings.getByIdAsync("GUID", {}, function(result) {
     if (result.status == Office.AsyncResultStatus.Succeeded) console.log(result.value.id);
     else console.log(result.error);
@@ -78,7 +78,7 @@ async function changeCCContent() {
       .insertText("Juan", "replace");
     await context.sync();
   });
-}
+}*/
 /** Default helper for invoking an action and handling errors. */
 // async function tryCatch(callback) {
 //   try {
