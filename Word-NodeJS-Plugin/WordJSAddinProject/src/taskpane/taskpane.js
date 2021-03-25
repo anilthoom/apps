@@ -37,6 +37,7 @@ function createContentControl() {
 
     var serviceNameRange = context.document.getSelection();
     var serviceNameContentControl = serviceNameRange.insertContentControl();
+    serviceNameContentControl.title = "Service Name";
 
       return context.sync();
   })
