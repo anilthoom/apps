@@ -34,11 +34,12 @@ Office.onReady(info => {
 });
 function createContentControl() {
   Word.run(function (context) {
-
     var serviceNameRange = context.document.getSelection();
     var serviceNameContentControl = serviceNameRange.insertContentControl();
     serviceNameContentControl.title = "Service Name";
     serviceNameContentControl.tag = "serviceName";
+    serviceNameContentControl.appearance = "Tags";
+    serviceNameContentControl.color = "blue";
 
       return context.sync();
   })
