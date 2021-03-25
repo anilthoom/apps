@@ -35,7 +35,7 @@ Office.onReady(info => {
 function createContentControl() {
   Word.run(function (context) {
 
-      // TODO1: Queue commands to create a content control.
+    var serviceNameRange = context.document.getSelection();
 
       return context.sync();
   })
