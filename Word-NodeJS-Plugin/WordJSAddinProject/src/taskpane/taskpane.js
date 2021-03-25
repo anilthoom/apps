@@ -38,8 +38,9 @@ function createContentControl() {
     var serviceNameContentControl = serviceNameRange.insertContentControl();
     serviceNameContentControl.title = "Service Name";
     serviceNameContentControl.tag = "serviceName";
-    serviceNameContentControl.appearance = "Tags";
+    serviceNameContentControl.appearance = "Hidden";
     serviceNameContentControl.color = "blue";
+    serviceNameContentControl.insertHtml("<p style=\"font-family: verdana;\">Inserted HTML.</p>", "End");
     return context.sync();
   })
   .catch(function (error) {
