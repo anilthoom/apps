@@ -80,14 +80,14 @@ async function changeCCContent() {
   });
 }
 /** Default helper for invoking an action and handling errors. */
-async function tryCatch(callback) {
-  try {
-    await callback();
-  } catch (error) {
-    OfficeHelpers.UI.notify(error);
-    OfficeHelpers.Utilities.log(error);
-  }
-}
+// async function tryCatch(callback) {
+//   try {
+//     await callback();
+//   } catch (error) {
+//     OfficeHelpers.UI.notify(error);
+//     OfficeHelpers.Utilities.log(error);
+//   }
+// }
 /** Content Control Change Events Code Ends Here */
 
 
