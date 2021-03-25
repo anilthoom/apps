@@ -29,6 +29,7 @@ Office.onReady(info => {
     document.getElementById("insert-image").onclick = insertImage;
     document.getElementById("insert-html").onclick = insertHTML;
     document.getElementById("insert-table").onclick = insertTable;
+    document.getElementById("create-content-control").onclick = createContentControl;
   }
 });
 function insertTable() {
