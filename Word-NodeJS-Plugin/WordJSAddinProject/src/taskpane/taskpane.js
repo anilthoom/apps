@@ -34,16 +34,11 @@ Office.onReady(info => {
   }
 });
 /** Content Control Change Events Code Starts Here */
-async function wrapRangeWithContentControl() {
+async function wrapRangeWithContentControl(contentControl) {
   await Word.run(async (context) => {
     //grabs the first paragraph and inserts a content control
-    let cc = context.document.body.paragraphs
-      .getFirst()
-      .getRange()
-      .insertContentControl();
-    cc.title = "GUID";
     await context.sync();
-    createBinding(cc.title);
+    createBinding(contentControl.title);
   });
 }
 function createBinding(ccTitle) {
@@ -95,7 +90,6 @@ function replaceContentInControl() {
   Word.run(function (context) {
     var serviceNameContentControl = context.document.contentControls.getByTag("serviceName").getFirst();
     serviceNameContentControl.insertText("Fabrikam Online Productivity Suite", "Replace");
-    wrapRangeWithContentControl();
     return context.sync();
   })
   .catch(function (error) {
@@ -109,12 +103,12 @@ function createContentControl() {
   Word.run(function (context) {
     var serviceNameRange = context.document.getSelection();
     var serviceNameContentControl = serviceNameRange.insertContentControl();
-    serviceNameContentControl.title = "Service Name";
-    serviceNameContentControl.tag = "serviceName";
+    serviceNameContentControl.title = "ServiceName2";
+    serviceNameContentControl.tag = "serviceName2";
     serviceNameContentControl.appearance = "Hidden";
     serviceNameContentControl.color = "blue";
     serviceNameContentControl.insertHtml("<p style=\"font-family: verdana;\">Inserted HTML.</p>", "End");
-    serviceNameContentControl.onD
+    wrapRangeWithContentControl(serviceNameContentControl);
     return context.sync();
   })
   .catch(function (error) {
