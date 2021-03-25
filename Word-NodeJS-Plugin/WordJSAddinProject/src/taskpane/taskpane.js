@@ -33,10 +33,69 @@ Office.onReady(info => {
     document.getElementById("replace-content-in-control").onclick = replaceContentInControl;
   }
 });
+/** Content Control Change Events Code Starts Here */
+async function wrapRangeWithContentControl() {
+  await Word.run(async (context) => {
+    //grabs the first paragraph and inserts a content control
+    let cc = context.document.body.paragraphs
+      .getFirst()
+      .getRange()
+      .insertContentControl();
+    cc.title = "GUID";
+    await context.sync();
+    createBinding(cc.title);
+  });
+}
+function createBinding(ccTitle) {
+  //this method creates a Binding and Subscribes to DataChanged Event.
+  Office.context.document.bindings.addFromNamedItemAsync(ccTitle, Office.BindingType.Text, { id: ccTitle }, function(
+    result
+  ) {
+    if (result.status == Office.AsyncResultStatus.Succeeded){
+      //binding created! lets subscribe to the event.
+      result.value.addHandlerAsync(Office.EventType.BindingDataChanged, handler);
+      result.value.removeHandlerAsync}
+    else 
+    console.log(result.error.message);
+  });
+}
+function handler() {
+  insertHTML();
+  console.log("data changed happened");
+}
+function getBinding() {
+  Office.context.document.bindings.getByIdAsync("GUID", {}, function(result) {
+    if (result.status == Office.AsyncResultStatus.Succeeded) console.log(result.value.id);
+    else console.log(result.error);
+  });
+}
+async function changeCCContent() {
+  await Word.run(async (context) => {
+    //grabs the first paragraph and inserts a content control
+    let cc = context.document.contentControls
+      .getByTitle("GUID")
+      .getFirst()
+      .insertText("Juan", "replace");
+    await context.sync();
+  });
+}
+/** Default helper for invoking an action and handling errors. */
+async function tryCatch(callback) {
+  try {
+    await callback();
+  } catch (error) {
+    OfficeHelpers.UI.notify(error);
+    OfficeHelpers.Utilities.log(error);
+  }
+}
+/** Content Control Change Events Code Ends Here */
+
+
 function replaceContentInControl() {
   Word.run(function (context) {
     var serviceNameContentControl = context.document.contentControls.getByTag("serviceName").getFirst();
     serviceNameContentControl.insertText("Fabrikam Online Productivity Suite", "Replace");
+    wrapRangeWithContentControl();
     return context.sync();
   })
   .catch(function (error) {
@@ -55,6 +114,7 @@ function createContentControl() {
     serviceNameContentControl.appearance = "Hidden";
     serviceNameContentControl.color = "blue";
     serviceNameContentControl.insertHtml("<p style=\"font-family: verdana;\">Inserted HTML.</p>", "End");
+    serviceNameContentControl.onD
     return context.sync();
   })
   .catch(function (error) {
