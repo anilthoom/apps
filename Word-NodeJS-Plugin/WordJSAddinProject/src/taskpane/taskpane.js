@@ -35,9 +35,7 @@ Office.onReady(info => {
 });
 function replaceContentInControl() {
   Word.run(function (context) {
-
-      // TODO1: Queue commands to replace the text in the Service Name
-      //        content control.
+    var serviceNameContentControl = context.document.contentControls.getByTag("serviceName").getFirst();
 
       return context.sync();
   })
