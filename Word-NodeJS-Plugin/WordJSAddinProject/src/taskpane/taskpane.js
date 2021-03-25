@@ -36,8 +36,8 @@ Office.onReady(info => {
 function replaceContentInControl() {
   Word.run(function (context) {
     var serviceNameContentControl = context.document.contentControls.getByTag("serviceName").getFirst();
-
-      return context.sync();
+    serviceNameContentControl.insertText("Fabrikam Online Productivity Suite", "Replace");
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
