@@ -32,6 +32,20 @@ Office.onReady(info => {
     document.getElementById("create-content-control").onclick = createContentControl;
   }
 });
+function createContentControl() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to create a content control.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function insertTable() {
   Word.run(function (context) {
   var secondParagraph = context.document.body.paragraphs.getFirst().getNext();
