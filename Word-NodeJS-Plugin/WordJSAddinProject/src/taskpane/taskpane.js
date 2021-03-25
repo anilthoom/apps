@@ -33,6 +33,21 @@ Office.onReady(info => {
     document.getElementById("replace-content-in-control").onclick = replaceContentInControl;
   }
 });
+function replaceContentInControl() {
+  Word.run(function (context) {
+
+      // TODO1: Queue commands to replace the text in the Service Name
+      //        content control.
+
+      return context.sync();
+  })
+  .catch(function (error) {
+      console.log("Error: " + error);
+      if (error instanceof OfficeExtension.Error) {
+          console.log("Debug info: " + JSON.stringify(error.debugInfo));
+      }
+  });
+}
 function createContentControl() {
   Word.run(function (context) {
     var serviceNameRange = context.document.getSelection();
