@@ -30,6 +30,7 @@ Office.onReady(info => {
     document.getElementById("insert-html").onclick = insertHTML;
     document.getElementById("insert-table").onclick = insertTable;
     document.getElementById("create-content-control").onclick = createContentControl;
+    document.getElementById("replace-content-in-control").onclick = replaceContentInControl;
   }
 });
 function createContentControl() {
