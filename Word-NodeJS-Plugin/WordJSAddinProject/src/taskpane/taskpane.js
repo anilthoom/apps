@@ -36,6 +36,7 @@ function createContentControl() {
   Word.run(function (context) {
 
     var serviceNameRange = context.document.getSelection();
+    var serviceNameContentControl = serviceNameRange.insertContentControl();
 
       return context.sync();
   })
