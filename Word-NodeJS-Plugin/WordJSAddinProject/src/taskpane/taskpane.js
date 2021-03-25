@@ -40,8 +40,7 @@ function createContentControl() {
     serviceNameContentControl.tag = "serviceName";
     serviceNameContentControl.appearance = "Tags";
     serviceNameContentControl.color = "blue";
-
-      return context.sync();
+    return context.sync();
   })
   .catch(function (error) {
       console.log("Error: " + error);
