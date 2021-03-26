@@ -36,18 +36,18 @@ Office.onReady(info => {
 /** Content Control Change Events Code Starts Here */
 async function wrapRangeWithContentControl(contentControl) {
   await Word.run(async (context) => {
-    //grabs the first paragraph and inserts a content control
+    // grabs the first paragraph and inserts a content control
     await context.sync();
     createBinding(contentControl.title);
   });
 }
 function createBinding(ccTitle) {
-  //this method creates a Binding and Subscribes to DataChanged Event.
+  // this method creates a Binding and Subscribes to DataChanged Event.
   Office.context.document.bindings.addFromNamedItemAsync(ccTitle, Office.BindingType.Text, { id: ccTitle }, function(
     result
   ) {
     if (result.status == Office.AsyncResultStatus.Succeeded){
-      //binding created! lets subscribe to the event.
+      // binding created! lets subscribe to the event.
       result.value.addHandlerAsync(Office.EventType.BindingDataChanged, handler);
       result.value.removeHandlerAsync}
     else 
