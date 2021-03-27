@@ -179,36 +179,3 @@ while running:
     printScore(textX, testY)
     pygame.display.update()
 print("Thanks for playing")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
