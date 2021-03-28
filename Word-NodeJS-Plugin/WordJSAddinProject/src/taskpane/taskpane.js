@@ -103,11 +103,11 @@ function createContentControl() {
   Word.run(function (context) {
     var serviceNameRange = context.document.getSelection();
     var serviceNameContentControl = serviceNameRange.insertContentControl();
-    serviceNameContentControl.title = "ServiceName2";
-    serviceNameContentControl.tag = "serviceName2";
+    serviceNameContentControl.title = "ServiceName1";
+    serviceNameContentControl.tag = "serviceName1";
     serviceNameContentControl.appearance = "Hidden";
     serviceNameContentControl.color = "blue";
-    serviceNameContentControl.insertHtml("<p style=\"font-family: verdana;\">Inserted HTML.</p>", "End");
+    serviceNameContentControl.insertHtml("<p style=\"font-family: verdana;\">Inserted NEW HTML.</p>", "End");
     wrapRangeWithContentControl(serviceNameContentControl);
     return context.sync();
   })
@@ -139,7 +139,8 @@ function insertTable() {
 function insertHTML() {
   Word.run(function (context) {
     var blankParagraph = context.document.body.paragraphs.getLast().insertParagraph("", "After");
-    blankParagraph.insertHtml('<p style="font-family: verdana;">Inserted HTML.</p><p>Another paragraph</p>', "End");
+    blankParagraph.insertHtml('<p style="font-family: verdana;">ANIL HTML.</p><p> This is another paragraph</p>', "End");
+    //blankParagraph.insertHtml('Just a text','End');
     return context.sync();
   })
   .catch(function (error) {
