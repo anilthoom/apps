@@ -99,12 +99,15 @@ function replaceContentInControl() {
       }
   });
 }
+function gerRandomNumber(){
+  return new Date().getMilliseconds();
+}
 function createContentControl() {
   Word.run(function (context) {
     var serviceNameRange = context.document.getSelection();
     var serviceNameContentControl = serviceNameRange.insertContentControl();
-    serviceNameContentControl.title = "ServiceName1";
-    serviceNameContentControl.tag = "serviceName1";
+    serviceNameContentControl.title = "ServiceName_"+gerRandomNumber();
+    serviceNameContentControl.tag = "serviceName_"+gerRandomNumber();
     serviceNameContentControl.appearance = "Hidden";
     serviceNameContentControl.color = "blue";
     serviceNameContentControl.insertHtml("<p style=\"font-family: verdana;\">Inserted NEW HTML.</p>", "End");
