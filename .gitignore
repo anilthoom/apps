@@ -35,6 +35,8 @@ ContentLibMSWord/.idea
 .history/*
 /Word-NodeJS-Plugin/WordJSAddinProject/.vscode
 /Word-NodeJS-Plugin/WordJSAddinProject/node_modules
+/Word-NodeJS-Plugin/WordNodeJSApp/node_modules
+/Word-NodeJS-Plugin/WordNodeJSApp/.vscode
 
 # misc
 /.sass-cache
