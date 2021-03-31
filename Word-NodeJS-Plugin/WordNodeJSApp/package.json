@@ -1,0 +1,11 @@
+{
+  "name": "wordnodejsapp",
+  "version": "1.0.0",
+  "description": "NodeJS app for Word plug-in",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AnilThoom",
+  "license": "ISC"
+}
