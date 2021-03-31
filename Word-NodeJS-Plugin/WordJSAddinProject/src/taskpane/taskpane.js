@@ -17,9 +17,9 @@ Office.onReady(info => {
     if (!Office.context.requirements.isSetSupported('WordApi', '1.3')) {
       console.log('Sorry, Not supported.');
     }
-    /*document.getElementById("sideload-msg").style.display = "none";
+    document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
-    document.getElementById("insert-paragraph").onclick = insertParagraph;
+    /*document.getElementById("insert-paragraph").onclick = insertParagraph;
     document.getElementById("apply-style").onclick = applyStyle;
     document.getElementById("apply-custom-style").onclick = applyCustomStyle;
     document.getElementById("change-font").onclick = changeFont;
