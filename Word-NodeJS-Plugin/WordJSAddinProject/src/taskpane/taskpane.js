@@ -10,7 +10,6 @@ import "../../assets/icon-80.png";
 import { base64Image } from "../../base64Image";
 
 /* global document, Office, Word */
-
 Office.onReady(info => {
   if (info.host === Office.HostType.Word) {
     // Determine if the user's version of Office supports all the Office.js APIs that are used in the tutorial.
