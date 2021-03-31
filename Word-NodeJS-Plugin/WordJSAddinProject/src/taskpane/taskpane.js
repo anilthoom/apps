@@ -55,7 +55,7 @@ function createBinding(ccTitle) {
   });
 }
 function handler() {
-  insertHTML();
+  insertImage();
   console.log("data changed happened");
 }
 /*function getBinding() {
@@ -85,20 +85,6 @@ async function changeCCContent() {
 // }
 /** Content Control Change Events Code Ends Here */
 
-
-function replaceContentInControl() {
-  Word.run(function (context) {
-    var serviceNameContentControl = context.document.contentControls.getByTag("serviceName").getFirst();
-    serviceNameContentControl.insertText("Fabrikam Online Productivity Suite", "Replace");
-    return context.sync();
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
 function gerRandomNumber(){
   return new Date().getMilliseconds();
 }
@@ -121,151 +107,9 @@ function createContentControl() {
       }
   });
 }
-function insertTable() {
-  Word.run(function (context) {
-  var secondParagraph = context.document.body.paragraphs.getFirst().getNext();
-  var tableData = [
-      ["Name", "ID", "Birth City"],
-      ["Bob", "434", "Chicago"],
-      ["Sue", "719", "Havana"],
-  ];
-  secondParagraph.insertTable(3, 3, "After", tableData);
-  return context.sync();
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
-function insertHTML() {
-  Word.run(function (context) {
-    var blankParagraph = context.document.body.paragraphs.getLast().insertParagraph("", "After");
-    blankParagraph.insertHtml('<p style="font-family: verdana;">ANIL HTML.</p><p> This is another paragraph</p>', "End");
-    //blankParagraph.insertHtml('Just a text','End');
-    return context.sync();
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
 function insertImage() {
   Word.run(function (context) {
     context.document.body.insertInlinePictureFromBase64(base64Image, "End");
-    return context.sync();
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
-function replaceText() {
-  Word.run(function (context) {
-    var doc = context.document;
-    var originalRange = doc.getSelection();
-    originalRange.insertText("many", "Replace");
-    return context.sync();
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
-function insertTextBeforeRange() {
-  Word.run(function (context) {
-    var doc = context.document;
-    var originalRange = doc.getSelection();
-    originalRange.insertText("Office 2019, ", "Before");
-
-    originalRange.load("text");
-    return context.sync()
-       .then(function() {
-        doc.body.insertParagraph("Current text of original range: " + originalRange.text, "End");
-       })
-       .then(context.sync);
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
-function insertTextIntoRange() {
-  Word.run(function (context) {
-      var doc = context.document;
-      var originalRange = doc.getSelection();
-      originalRange.insertText(" (C2R)", "End");
-
-      originalRange.load("text");
-      return context.sync()
-          .then(function() {
-              doc.body.insertParagraph("Current text of original range: " + originalRange.text, "End");
-          })
-          .then(context.sync);
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
-function changeFont() {
-  Word.run(function (context) {
-    var secondParagraph = context.document.body.paragraphs.getFirst().getNext();
-    secondParagraph.font.set({
-            name: "Courier New",
-            bold: true,
-            size: 18
-        });
-    return context.sync();
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
-function insertParagraph(){
-  Word.run(function(context){
-    var docBody = context.document.body;
-    docBody.insertParagraph("Anil is THOPE!!!!", "Start");
-    return context.sync();
-  })
-  .catch(function (error){
-    console.log("Error: "+error);
-    if(error instanceof OfficeExtension.Error){
-      console.log("Debug info: "+JSON.stringify(error.debugInfo));
-    }
-  });
-}
-function applyStyle() {
-  Word.run(function (context) {
-    var firstParagraph = context.document.body.paragraphs.getFirst();
-    firstParagraph.styleBuiltIn = Word.Style.intenseReference;
-    return context.sync();
-  })
-  .catch(function (error) {
-      console.log("Error: " + error);
-      if (error instanceof OfficeExtension.Error) {
-          console.log("Debug info: " + JSON.stringify(error.debugInfo));
-      }
-  });
-}
-function applyCustomStyle() {
-  Word.run(function (context) {
-    var lastParagraph = context.document.body.paragraphs.getLast();
-    lastParagraph.style = "MyCustomStyle";
     return context.sync();
   })
   .catch(function (error) {
