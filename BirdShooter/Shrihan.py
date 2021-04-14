@@ -17,10 +17,10 @@ TICKS_PER_SEC = 60
 # Size of sectors used to ease block loading.
 SECTOR_SIZE = 100
 
-WALKING_SPEED = 15
+WALKING_SPEED = 12
 FLYING_SPEED = 1
 
-GRAVITY = 15
+GRAVITY = 1
 
 MAX_JUMP_HEIGHT = 1# About the height of a block.
 # To derive the formula for calculating jump speed, first solve
@@ -31,9 +31,9 @@ MAX_JUMP_HEIGHT = 1# About the height of a block.
 # Use t and the desired MAX_JUMP_HEIGHT to solve for v_0 (jump speed) in
 #    s = s_0 + v_0 * t + (a * t^2) / 2
 JUMP_SPEED = math.sqrt(2 * GRAVITY * MAX_JUMP_HEIGHT)
-TERMINAL_VELOCITY = 15
+TERMINAL_VELOCITY = 150
 
-PLAYER_HEIGHT = 2
+PLAYER_HEIGHT = 1
 
 if sys.version_info[0] >= 3:
     xrange = range
