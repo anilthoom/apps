@@ -20,7 +20,7 @@ SECTOR_SIZE = 100
 WALKING_SPEED = 10
 FLYING_SPEED = 120
 
-GRAVITY = 1
+GRAVITY = 100
 
 MAX_JUMP_HEIGHT = 10.23# About the height of a block.
 # To derive the formula for calculating jump speed, first solve
@@ -31,7 +31,7 @@ MAX_JUMP_HEIGHT = 10.23# About the height of a block.
 # Use t and the desired MAX_JUMP_HEIGHT to solve for v_0 (jump speed) in
 #    s = s_0 + v_0 * t + (a * t^2) / 2
 JUMP_SPEED = math.sqrt( 1*GRAVITY * MAX_JUMP_HEIGHT)
-TERMINAL_VELOCITY = 150
+TERMINAL_VELOCITY = 1
 
 PLAYER_HEIGHT = 1
 
