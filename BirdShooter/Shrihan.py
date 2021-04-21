@@ -304,7 +304,7 @@ class Model(object):
             Whether or not to show the block immediately.
 
         """
-        texture = self.world[position]
+        texture = self.world[p]
         self.shown[position] = texture
         if immediate:
             self._show_block(position,texture)
