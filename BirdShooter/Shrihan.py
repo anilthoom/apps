@@ -17,10 +17,10 @@ TICKS_PER_SEC = 60
 # Size of sectors used to ease block loading.
 SECTOR_SIZE = 100
 
-WALKING_SPEED = 10
+WALKING_SPEED = 3
 FLYING_SPEED = 120
 
-GRAVITY = 100
+GRAVITY = 15
 
 MAX_JUMP_HEIGHT = 10.23# About the height of a block.
 # To derive the formula for calculating jump speed, first solve
@@ -304,7 +304,7 @@ class Model(object):
             Whether or not to show the block immediately.
 
         """
-        texture = self.world[p]
+        texture = self.world[position]
         self.shown[position] = texture
         if immediate:
             self._show_block(position,texture)
