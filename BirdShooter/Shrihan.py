@@ -31,7 +31,7 @@ MAX_JUMP_HEIGHT = 10# About the height of a block.
 # Use t and the desired MAX_JUMP_HEIGHT to solve for v_0 (jump speed) in
 #    s = s_0 + v_0 * t + (a * t^2) / 2
 JUMP_SPEED = math.sqrt( 1*GRAVITY * MAX_JUMP_HEIGHT)
-TERMINAL_VELOCITY = 10
+TERMINAL_VELOCITY = 0.1
 
 PLAYER_HEIGHT = 2
 
