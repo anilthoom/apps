@@ -22,7 +22,7 @@ FLYING_SPEED = 120
 
 GRAVITY = 15
 
-MAX_JUMP_HEIGHT = 1# About the height of a block.
+MAX_JUMP_HEIGHT = 2# About the height of a block.
 # To derive the formula for calculating jump speed, first solve
 #    v_t = v_0 + a * t
 # for the time at which you achieve maximum height, where a is the acceleration
