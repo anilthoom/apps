@@ -72,7 +72,7 @@ def tex_coords(top, bottom, side):
     result = []
     result.extend(top)
     result.extend(bottom)
-    result.extend(side * 2)
+    result.extend(side *4)
     return result
 
 
