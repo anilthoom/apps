@@ -17,10 +17,10 @@ TICKS_PER_SEC = 120
 # Size of sectors used to ease block loading.
 SECTOR_SIZE = 100
 
-WALKING_SPEED = 3
+WALKING_SPEED = 19
 FLYING_SPEED = 0
 
-GRAVITY = 30
+GRAVITY = 15
 
 MAX_JUMP_HEIGHT = 1# About the height of a block.
 # To derive the formula for calculating jump speed, first solve
