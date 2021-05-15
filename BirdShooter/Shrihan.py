@@ -167,15 +167,15 @@ class Model(object):
         for x in xrange(-n, n + 1, s):
             for z in xrange(-n, n + 1, s):
                 # create a layer stone an grass everywhere.
-                self.add_block((x, y - 2, z), GRASS, immediate=False)
-                self.add_block((x, y - 3, z), STONE, immediate=False)
+                self.add_block((x, y - 2, z), BRICK, immediate=False)
+                self.add_block((x, y - 3, z), GRASS, immediate=False)
                 if x in (-n, n) or z in (-n, n):
                     # create outer walls.
                     for dy in xrange(-2, 3):
                         self.add_block((x, y + dy, z), STONE, immediate=False)
 
         # generate the hills randomly
-        o = n - 10
+        o = n - 20
         for _ in xrange(120):
             a = random.randint(-o, o)  # x position of the hill
             b = random.randint(-o, o)  # z position of the hill
