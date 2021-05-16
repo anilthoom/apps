@@ -15,14 +15,14 @@ from pyglet.window import key, mouse
 TICKS_PER_SEC = 120
 
 # Size of sectors used to ease block loading.
-SECTOR_SIZE = 100
+SECTOR_SIZE = 100000
 
-WALKING_SPEED = 19
+WALKING_SPEED = 10
 FLYING_SPEED = 0
 
-GRAVITY = 15
+GRAVITY = 20
 
-MAX_JUMP_HEIGHT = 15# About the height of a block.
+MAX_JUMP_HEIGHT = 1# About the height of a block.
 # To derive the formula for calculating jump speed, first solve
 #    v_t = v_0 + a * t
 # for the time at which you achieve maximum height, where a is the acceleration
@@ -30,7 +30,7 @@ MAX_JUMP_HEIGHT = 15# About the height of a block.
 #    t = - v_0 / a
 # Use t and the desired MAX_JUMP_HEIGHT to solve for v_0 (jump speed) in
 #    s = s_0 + v_0 * t + (a * t^2) / 2
-JUMP_SPEED = math.sqrt( 1*GRAVITY * MAX_JUMP_HEIGHT)
+JUMP_SPEED = math.sqrt( 2*GRAVITY * MAX_JUMP_HEIGHT)
 TERMINAL_VELOCITY = 2
 
 PLAYER_HEIGHT = 2
@@ -38,7 +38,7 @@ PLAYER_HEIGHT = 2
 if sys.version_info[0] >= 3:
     xrange = range
 
-def cube_vertices(x, y, z, n):
+def cube_vertices(y, x, z, n):
     """ Return the vertices of the cube at position x, y, z with size 2*n.
 
     """
@@ -162,7 +162,7 @@ class Model(object):
 
         """
         n = 80  # 1/2 width and height of world
-        s = 1  # step size
+        s = 12  # step size
         y = 0  # initial y height
         for x in xrange(-n, n + 1, s):
             for z in xrange(-n, n + 1, s):
@@ -175,11 +175,11 @@ class Model(object):
                         self.add_block((x, y + dy, z), STONE, immediate=False)
 
         # generate the hills randomly
-        o = n - 20
-        for _ in xrange(120):
+        o = n - 12
+        for _ in xrange(10):
             a = random.randint(-o, o)  # x position of the hill
             b = random.randint(-o, o)  # z position of the hill
-            c = -1  # base of the hill
+            c = -20  # base of the hill
             h = random.randint(1, 6)  # height of the hill
             s = random.randint(4, 8)  # 2 * s is the side length of the hill
             d = 1  # how quickly to taper off the hills
