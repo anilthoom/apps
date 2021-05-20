@@ -12,19 +12,19 @@ from pyglet.graphics import TextureGroup
 from pyglet.window import key, mouse
 
 
-TICKS_PER_SEC = 120
+TICKS_PER_SEC = 60
 
 # Size of sectors used to ease block loading.
-SECTOR_SIZE = 100000
+SECTOR_SIZE = 1000
 
-WALKING_SPEED = 10
+WALKING_SPEED = 5
 FLYING_SPEED = 0
 
-GRAVITY = 20
+GRAVITY = 1
 
 MAX_JUMP_HEIGHT = 1# About the height of a block.
 # To derive the formula for calculating jump speed, first solve
-#    v_t = v_0 + a * t
+#    v_t = v_0 + a * w
 # for the time at which you achieve maximum height, where a is the acceleration
 # due to gravity and v_t = 0. This gives:
 #    t = - v_0 / a
@@ -38,7 +38,7 @@ PLAYER_HEIGHT = 2
 if sys.version_info[0] >= 3:
     xrange = range
 
-def cube_vertices(y, x, z, n):
+def cube_vertices(x, y, z, n):
     """ Return the vertices of the cube at position x, y, z with size 2*n.
 
     """
@@ -162,7 +162,7 @@ class Model(object):
 
         """
         n = 80  # 1/2 width and height of world
-        s = 12  # step size
+        s = 1  # step size
         y = 0  # initial y height
         for x in xrange(-n, n + 1, s):
             for z in xrange(-n, n + 1, s):
@@ -175,11 +175,11 @@ class Model(object):
                         self.add_block((x, y + dy, z), STONE, immediate=False)
 
         # generate the hills randomly
-        o = n - 12
-        for _ in xrange(10):
+        o = n - 20
+        for _ in xrange(120):
             a = random.randint(-o, o)  # x position of the hill
             b = random.randint(-o, o)  # z position of the hill
-            c = -20  # base of the hill
+            c = -20000  # base of the hill
             h = random.randint(1, 6)  # height of the hill
             s = random.randint(4, 8)  # 2 * s is the side length of the hill
             d = 1  # how quickly to taper off the hills
