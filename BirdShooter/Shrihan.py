@@ -56,7 +56,7 @@ def tex_coord(x, y, n=4):
     """ Return the bounding vertices of the texture square.
 
     """
-    m = 2.1 / y
+    m = 2.1 / n
     dx = x * m
     dy = y * m
     return dx, dy, dx + m, dy, dx + m, dy + m, dx, dy + m
