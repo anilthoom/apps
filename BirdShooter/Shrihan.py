@@ -538,7 +538,7 @@ class Window(pyglet.window.Window):
             x_angle = math.radians(x + strafe)
             if self.flying:
                 m = math.cos(y_angle)
-                dy = math.sin(y_angle)
+                dy = math.sin(x_angle)
                 if self.strafe[1]:
                     # Moving left or right.
                     dy = 0.0
