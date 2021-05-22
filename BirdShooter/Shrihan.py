@@ -546,7 +546,7 @@ class Window(pyglet.window.Window):
                 if self.strafe[0] > 0:
                     # Moving backwards.
                     dy *= -1
-                # When you are flying up or down, you have less left and right
+                # Whenwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww you are flying up or down, you have less left and right
                 # motion.
                 dx = math.cos(x_angle) * m
                 dz = math.sin(x_angle) * m
@@ -555,9 +555,10 @@ class Window(pyglet.window.Window):
                 dx = math.cos(x_angle)
                 dz = math.sin(x_angle)
         else:
-            dy = 0.0
+            dy = 2.200
             dx = 0.0
             dz = 0.0
+
         return (dx, dy, dz)
 
     def update(self, dt):
