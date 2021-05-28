@@ -1,6 +1,6 @@
 from __future__ import division
+
 import sys
-import pygame
 import math
 import random
 import time
@@ -11,27 +11,25 @@ from pyglet.gl import *
 from pyglet.graphics import TextureGroup
 from pyglet.window import key, mouse
 
-
 TICKS_PER_SEC = 60
 
 # Size of sectors used to ease block loading.
-SECTOR_SIZE = 1000
+SECTOR_SIZE = 16
 
 WALKING_SPEED = 5
-FLYING_SPEED = 0
+FLYING_SPEED = 15
 
-GRAVITY = 1
-
-MAX_JUMP_HEIGHT = 1# About the height of a block.
+GRAVITY = 20.0
+MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 # To derive the formula for calculating jump speed, first solve
-#    v_t = v_0 + a * w
+#    v_t = v_0 + a * t
 # for the time at which you achieve maximum height, where a is the acceleration
 # due to gravity and v_t = 0. This gives:
 #    t = - v_0 / a
 # Use t and the desired MAX_JUMP_HEIGHT to solve for v_0 (jump speed) in
 #    s = s_0 + v_0 * t + (a * t^2) / 2
-JUMP_SPEED = math.sqrt( 2*GRAVITY * MAX_JUMP_HEIGHT)
-TERMINAL_VELOCITY = 2
+JUMP_SPEED = math.sqrt(2 * GRAVITY * MAX_JUMP_HEIGHT)
+TERMINAL_VELOCITY = 50
 
 PLAYER_HEIGHT = 2
 
@@ -56,7 +54,7 @@ def tex_coord(x, y, n=4):
     """ Return the bounding vertices of the texture square.
 
     """
-    m = 2.1 / n
+    m = 1.0 / n
     dx = x * m
     dy = y * m
     return dx, dy, dx + m, dy, dx + m, dy + m, dx, dy + m
@@ -72,13 +70,13 @@ def tex_coords(top, bottom, side):
     result = []
     result.extend(top)
     result.extend(bottom)
-    result.extend(side *4 )
+    result.extend(side * 4)
     return result
 
 
 TEXTURE_PATH = 'texture.png'
 
-GRASS = tex_coords((3, 1), (1, 1), (1, 0))
+GRASS = tex_coords((1, 0), (0, 1), (0, 0))
 SAND = tex_coords((1, 1), (1, 1), (1, 1))
 BRICK = tex_coords((2, 0), (2, 0), (2, 0))
 STONE = tex_coords((2, 1), (2, 1), (2, 1))
@@ -167,19 +165,19 @@ class Model(object):
         for x in xrange(-n, n + 1, s):
             for z in xrange(-n, n + 1, s):
                 # create a layer stone an grass everywhere.
-                self.add_block((x, y - 2, z), BRICK, immediate=False)
-                self.add_block((x, y - 3, z), GRASS, immediate=False)
+                self.add_block((x, y - 2, z), GRASS, immediate=False)
+                self.add_block((x, y - 3, z), STONE, immediate=False)
                 if x in (-n, n) or z in (-n, n):
                     # create outer walls.
                     for dy in xrange(-2, 3):
                         self.add_block((x, y + dy, z), STONE, immediate=False)
 
         # generate the hills randomly
-        o = n - 20
+        o = n - 10
         for _ in xrange(120):
             a = random.randint(-o, o)  # x position of the hill
             b = random.randint(-o, o)  # z position of the hill
-            c = -20000  # base of the hill
+            c = -1  # base of the hill
             h = random.randint(1, 6)  # height of the hill
             s = random.randint(4, 8)  # 2 * s is the side length of the hill
             d = 1  # how quickly to taper off the hills
@@ -307,7 +305,7 @@ class Model(object):
         texture = self.world[position]
         self.shown[position] = texture
         if immediate:
-            self._show_block(position,texture)
+            self._show_block(position, texture)
         else:
             self._enqueue(self._show_block, position, texture)
 
@@ -538,7 +536,7 @@ class Window(pyglet.window.Window):
             x_angle = math.radians(x + strafe)
             if self.flying:
                 m = math.cos(y_angle)
-                dy = math.sin(x_angle)
+                dy = math.sin(y_angle)
                 if self.strafe[1]:
                     # Moving left or right.
                     dy = 0.0
@@ -546,7 +544,7 @@ class Window(pyglet.window.Window):
                 if self.strafe[0] > 0:
                     # Moving backwards.
                     dy *= -1
-                # Whenwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww you are flying up or down, you have less left and right
+                # When you are flying up or down, you have less left and right
                 # motion.
                 dx = math.cos(x_angle) * m
                 dz = math.sin(x_angle) * m
@@ -555,10 +553,9 @@ class Window(pyglet.window.Window):
                 dx = math.cos(x_angle)
                 dz = math.sin(x_angle)
         else:
-            dy = 2.200
+            dy = 0.0
             dx = 0.0
             dz = 0.0
-
         return (dx, dy, dz)
 
     def update(self, dt):
