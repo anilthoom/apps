@@ -11,7 +11,6 @@ io.on('connection', function(socket){
     socket.on('setUserName', function(data){
         if(users.indexOf(data) > -1){
             // TODO: Set suffix to the name and emit with new name
-             
             socket.emit('userExists', data + ' username is taken! Try some other name.');
         }
         else{
