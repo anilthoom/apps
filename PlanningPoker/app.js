@@ -10,7 +10,6 @@ users = [];
 io.on('connection', function(socket){
     console.log('User connected!');
     socket.on('setUserName', function(data){
-        console.log("Data object details : "+data);
         if(users.indexOf(data) > -1){
             socket.emit('userExists', data + ' username is taken! Try some other name.');
         }
