@@ -8,7 +8,6 @@ app.get('/', function(req, res){
 
 users = [];
 io.on('connection', function(socket){
-    console.log('User connected!');
     socket.on('setUserName', function(data){
         if(users.indexOf(data) > -1){
             socket.emit('userExists', data + ' username is taken! Try some other name.');
