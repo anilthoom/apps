@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 app.get('/', function(req, res){
-    res.sendFile('chat.html', {root: __dirname});
+    res.sendFile('app.html', {root: __dirname});
 });
 
 users = [];

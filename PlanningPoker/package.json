@@ -2,7 +2,7 @@
   "name": "planningpoker",
   "version": "1.0.0",
   "description": "Planning Poker Application for story points estimation",
-  "main": "chat.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
