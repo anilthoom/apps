@@ -1,48 +1,114 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Chat Application</title>
-   </head>
-   <script src = "/socket.io/socket.io.js"></script>
-   
-   <script>
-      var socket = io();
-      function setUserName(){
-        socket.emit('setUserName', document.getElementById('name').value);
-      };
 
-      socket.on('userExists', function(data){
-        document.getElementById('error-container').innerHTML = data;
-      });
-
-      var user;
-      socket.on('userSet', function(data){
-        user = data.username;
-        document.body.innerHTML = '<input type = "text" id = "message">\
-         <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
-         <div id = "message-container"></div>';
-      });
-
-      function sendMessage(){
-          var msg = document.getElementById('message').value;
-          if(msg){
-              socket.emit('msg', {message: msg, user: user});
-          }
+<head>
+   <title>Chat Application</title>
+   <link type="text/css" href="app.css" />
+   <style type="text/css" media="all">
+      body {
+         font-family: Arial, Helvetica, sans-serif;
+         background-color: #2980b9;
       }
 
-      socket.on('newmsg', function(data){
-        if(user) {
-            document.getElementById('message-container').innerHTML += '<div><b>' + 
-               data.user + '</b>: ' + data.message + '</div>'
-         }
-      });
-   </script>
-   <body>
-    <div id = "error-container"></div>
-    <input id = "name" type = "text" name = "name" value = "" 
-       placeholder = "Enter your name!">
-    <button type = "button" name = "button" onclick = "setUserName()">
-       Let me chat!
-    </button>
-   </body>
+      .flip-card {
+         background-color: transparent;
+         width: 300px;
+         height: 300px;
+         perspective: 1000px;
+      }
+
+      .flip-card-inner {
+         position: relative;
+         width: 100%;
+         height: 100%;
+         text-align: center;
+         transition: transform 0.6s;
+         transform-style: preserve-3d;
+         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      }
+
+      .flip-card:hover .flip-card-inner {
+         transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+         -webkit-backface-visibility: hidden;
+         backface-visibility: hidden;
+      }
+
+      .flip-card-front {
+         background-color: #bbb;
+         color: black;
+      }
+
+      .flip-card-back {
+         background-color: #2980b9;
+         color: white;
+         transform: rotateY(180deg);
+      }
+   </style>
+</head>
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+   var socket = io();
+   function setUserName() {
+      socket.emit('setUserName', document.getElementById('name').value);
+   };
+
+   socket.on('userExists', function (data) {
+      document.getElementById('error-container').innerHTML = data;
+   });
+
+   var user;
+   socket.on('userSet', function (data) {
+      user = data.username;
+      document.body.innerHTML = '<input type = "text" id = "message">\
+         <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
+         <div id = "message-container"></div>';
+   });
+
+   function sendMessage() {
+      var msg = document.getElementById('message').value;
+      if (msg) {
+         socket.emit('msg', { message: msg, user: user });
+      }
+   }
+
+   socket.on('newmsg', function (data) {
+      if (user) {
+         document.getElementById('message-container').innerHTML += '<div><b>' +
+            data.user + '</b>: ' + data.message + '</div>'
+      }
+   });
+</script>
+
+<body>
+   <div id="error-container"></div>
+   <input id="name" type="text" name="name" value="" placeholder="Enter your name!">
+   <button type="button" name="button" onclick="setUserName()">
+      Let me chat!
+   </button>
+   <img style="border:0px;" src="logo.png" />
+
+   <h1>Card Flip with Text</h1>
+   <h3>Hover over the image below:</h3>
+   <div class="flip-card">
+      <div class="flip-card-inner">
+         <div class="flip-card-front">
+            <img src="Shrihan.jpg" alt="Avatar" style="width:100%">
+         </div>
+         <div class="flip-card-back">
+            <h1>John Doe</h1>
+            <p>Architect & Engineer</p>
+            <p>We love that guy</p>
+         </div>
+      </div>
+   </div>
+</body>
+
 </html>
