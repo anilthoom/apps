@@ -9,16 +9,6 @@ app.get('/', function (req, res) {
 users = [];
 counter = 0;
 io.on('connection', function (socket) {
-    counter++;
-    if(counter <=2){
-        socket.join('Room1');
-        console.log('JOINED IN ROOM-1');
-    }
-    else{
-        socket.join('Room2');
-        console.log('JOINED IN ROOM-2');
-    }
-
     socket.on('setUserName', function (data) {
         if (users.indexOf(data) > -1) {
             // TODO: Set suffix to the name and emit with new name
