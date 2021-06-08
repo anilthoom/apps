@@ -7,7 +7,6 @@ app.get('/', function (req, res) {
 });
 
 users = [];
-counter = 0;
 io.on('connection', function (socket) {
     socket.on('setUserName', function (data) {
         if (users.indexOf(data) > -1) {
