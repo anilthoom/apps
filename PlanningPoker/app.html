@@ -17,7 +17,7 @@
 <script>
    var socket = io();
    function joinUserInRoom() {
-      socket.emit('joinUserInRoom', document.getElementById('name').value, document.getElementById('roomno').value);
+      socket.emit('joinUserInRoom', document.getElementById('roomno').value, document.getElementById('name').value);
    };
 
    socket.on('userExists', function (data) {
