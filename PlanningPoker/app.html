@@ -16,8 +16,8 @@
 
 <script>
    var socket = io();
-   function setUserName() {
-      socket.emit('setUserName', document.getElementById('name').value);
+   function joinUserInRoom() {
+      socket.emit('joinUserInRoom', document.getElementById('name').value, document.getElementById('roomno').value);
    };
 
    socket.on('userExists', function (data) {
@@ -55,7 +55,7 @@
    <label>User name</label>
    <input id="name" type="text" name="name" value="" placeholder="Enter your name!">
    <br/><br/>
-   <button type="button" name="button" onclick="setUserName()">
+   <button type="button" name="button" onclick="joinUserInRoom()">
       Let me chat!
    </button>
 </body>
