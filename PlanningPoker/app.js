@@ -16,7 +16,8 @@ io.on('connection', function (socket) {
         else {
             users.push(userName);
             socket.join(roomNo);
-            io.to(roomNo).emit('userSet', { username: userName });
+            console.log(roomNo, " ", userName )
+            io.to(roomNo).emit('userSet', { username: userName, roomnumber: roomNo });
         }
     });
 
