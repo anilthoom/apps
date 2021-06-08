@@ -25,9 +25,11 @@
    });
 
    var user;
+   var roomno;
    socket.on('userSet', function (data) {
       user = data.username;
-      document.body.innerHTML = '<label> Room No- <b>'+ data.roomno +'</b></label><br/>';
+      roomno = data.roomno;
+      document.body.innerHTML = '<label> Room No- <b>'+ roomno +'</b></label><br/>';
       document.body.innerHTML += '<label> Welcome <b>'+ user +'</b></label><br/>';
       document.body.innerHTML += '<input type = "text" id = "message">\
          <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
