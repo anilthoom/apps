@@ -8,21 +8,20 @@ app.get('/', function (req, res) {
 
 users = [];
 io.on('connection', function (socket) {
-    socket.on('joinUserInRoom', function (roomNo, userName) {
-        if (users.indexOf(userName) > -1) {
+    socket.on('joinUserInRoom', function (roomno, username) {
+        if (users.indexOf(username) > -1) {
             // TODO: Set suffix to the name and emit with new name
-            socket.emit('userExists', userName + ' username is taken! Try some other name.');
+            socket.emit('userExists', username + ' username is taken! Try some other name.');
         }
         else {
-            users.push(userName);
-            socket.join(roomNo);
-            console.log(roomNo, " ", userName )
-            io.to(roomNo).emit('userSet', { username: userName, roomnumber: roomNo });
+            users.push(username);
+            socket.join(roomno);
+            io.to(roomno).emit('userSet', { username: username, roomno: roomno });
         }
     });
 
-    socket.on('msg', function (userName) {
-        io.sockets.emit('newmsg', userName);
+    socket.on('msg', function (username) {
+        io.sockets.emit('newmsg', username);
     });
 });
 
