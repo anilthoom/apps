@@ -19,7 +19,7 @@ SECTOR_SIZE = 16
 WALKING_SPEED = 15
 FLYING_SPEED = 15
 
-GRAVITY = 5
+GRAVITY = 15
 MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 # To derive the formula for calculating jump speed, first solve
 #    v_t = v_0 + a * t
