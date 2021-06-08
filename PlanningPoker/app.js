@@ -27,7 +27,14 @@ io.on('connection', function (socket) {
         io.to(data.room).emit('newmsg', data);
     });
 });
-
+io.of("/").adapter.on("create-room", (room) => {
+    console.log(`room ${room} was created`);
+  });
+  
+  io.of("/").adapter.on("join-room", (room, id) => {
+    console.log(`socket ${id} has joined room ${room}`);
+  });
+  
 http.listen(3000, function () {
     console.log('Listening on 3000');
 });
