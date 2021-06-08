@@ -7,7 +7,9 @@ app.get('/', function (req, res) {
 });
 
 users = [];
+const rooms = io.of("/").adapter.rooms;
 io.on('connection', function (socket) {
+    console.log("ROOM SIZE : ", rooms.size)
     socket.on('joinUserInRoom', function (roomno, username) {
         if (users.indexOf(username) > -1) {
             // TODO: Set suffix to the name and emit with new name
@@ -20,8 +22,9 @@ io.on('connection', function (socket) {
         }
     });
 
-    socket.on('msg', function (username) {
-        io.sockets.emit('newmsg', username);
+    socket.on('msg', function (data) {
+        console.log(data)
+        io.to(data.room).emit('newmsg', data);
     });
 });
 
