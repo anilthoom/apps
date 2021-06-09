@@ -17,6 +17,7 @@
 <script>
    function hideDiv(){
       document.getElementById('chatDiv').hidden =true;
+      document.getElementById('error-container').hidden =true;
    }
    var socket = io();
 
@@ -30,6 +31,7 @@
 
    socket.on('userSet', function (username, roomno) {
       document.getElementById('userDetailsDiv').hidden =true;
+      document.getElementById('error-container').hidden =true;
       document.getElementById('rommLabel').innerHTML = "Room Number : "+document.getElementById('roomno').value;
       document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : "+document.getElementById('name').value;
       document.getElementById('chatDiv').hidden =false;
