@@ -25,13 +25,13 @@
       document.getElementById('error-container').innerHTML = data;
    });
 
-   var user;
-   var roomno;
-   socket.on('userSet', function (data) {
-      user = data.username;
-      roomno = data.roomno;
-      document.body.innerHTML = '<label> Room No- <b>'+ data.roomno +'</b></label><br/>';
-      document.body.innerHTML += '<label> Welcome <b>'+ data.username +'</b></label><br/>';
+   var g_user;
+   var g_user;
+   socket.on('userSet', function (username, roomno) {
+      g_user = data.username;
+      g_user = data.roomno;
+      document.body.innerHTML = '<label> Room No- <b>'+ roomno +'</b></label><br/>';
+      document.body.innerHTML += '<label> Welcome <b>'+ username +'</b></label><br/>';
       document.body.innerHTML += '<input type = "text" id = "message">\
          <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
          <div id = "message-container"></div>';
