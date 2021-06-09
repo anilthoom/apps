@@ -42,14 +42,14 @@
       if (msg) {
          //socket.emit('msg', { message: msg, user: user });
          debugger;
-         socket.emit('msg', msg, g_user, g_roomno);
+         socket.emit('msg', msg, g_roomno, g_user);
       }
    }
 
-   socket.on('newmsg', function (data) {
+   socket.on('newmsg', function (message, user) {
       if (true) {
          document.getElementById('message-container').innerHTML += '<div><b>' +
-            data.user + '</b>: ' + data.message + '</div>'
+            user + '</b>: ' + message + '</div>'
       }
    });
 </script>
