@@ -30,11 +30,6 @@
    socket.on('userSet', function (username, roomno) {
       g_user = username;
       g_roomno = roomno;
-      document.body.innerHTML = '<label> Room No- <b>'+ roomno +'</b></label><br/>';
-      document.body.innerHTML += '<label> Welcome <b>'+ username +'</b></label><br/>';
-      document.body.innerHTML += '<input type = "text" id = "message">\
-         <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
-         <div id = "message-container"></div>';
    });
 
    function sendMessage() {
@@ -55,6 +50,7 @@
 
 <body>
    <div id="error-container"></div>
+   <div id="userDetailsDiv">
    <label>Room number</label>
    <input id="roomno" type="text" name="roomno" value="" placeholder="Enter your room number!">
    <br/><br/>
@@ -64,6 +60,7 @@
    <button type="button" name="button" onclick="joinUserInRoom()">
       Let me chat!
    </button>
+</div>
    <div id="chatDiv">
       <label id=""> Room No- </label><br/>
       <label> Welcome </label><br/>
