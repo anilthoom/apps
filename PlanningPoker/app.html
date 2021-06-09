@@ -26,10 +26,10 @@
    });
 
    var g_user;
-   var g_user;
+   var g_roomno;
    socket.on('userSet', function (username, roomno) {
       g_user = data.username;
-      g_user = data.roomno;
+      g_roomno = data.roomno;
       document.body.innerHTML = '<label> Room No- <b>'+ roomno +'</b></label><br/>';
       document.body.innerHTML += '<label> Welcome <b>'+ username +'</b></label><br/>';
       document.body.innerHTML += '<input type = "text" id = "message">\
@@ -42,7 +42,7 @@
       if (msg) {
          //socket.emit('msg', { message: msg, user: user });
          debugger;
-         socket.emit('msg', { message: msg, user: user, room: roomno });
+         socket.emit('msg', msg, g_user, g_roomno);
       }
    }
 
