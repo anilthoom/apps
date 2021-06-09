@@ -28,8 +28,8 @@
    var g_user;
    var g_roomno;
    socket.on('userSet', function (username, roomno) {
-      g_user = data.username;
-      g_roomno = data.roomno;
+      g_user = username;
+      g_roomno = roomno;
       document.body.innerHTML = '<label> Room No- <b>'+ roomno +'</b></label><br/>';
       document.body.innerHTML += '<label> Welcome <b>'+ username +'</b></label><br/>';
       document.body.innerHTML += '<input type = "text" id = "message">\
