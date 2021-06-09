@@ -41,7 +41,6 @@
       var msg = document.getElementById('message').value;
       if (msg) {
          //socket.emit('msg', { message: msg, user: user });
-         debugger;
          socket.emit('msg', msg, g_roomno, g_user);
       }
    }
@@ -65,6 +64,13 @@
    <button type="button" name="button" onclick="joinUserInRoom()">
       Let me chat!
    </button>
+   <div id="chatDiv">
+      <label id=""> Room No- </label><br/>
+      <label> Welcome </label><br/>
+      <input type = "text" id = "message">
+         <button type = "button" name = "button" onclick = "sendMessage()">Send</button>
+         <div id = "message-container"></div>
+   </div>
 </body>
 
 </html>
