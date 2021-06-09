@@ -22,9 +22,9 @@ io.on('connection', function (socket) {
         }
     });
 
-    socket.on('msg', function (data) {
-        console.log(data)
-        io.to(data.room).emit('newmsg', data);
+    socket.on('msg', function (message, roomno, user) {
+        console.log(message)
+        io.to(roomno).emit('newmsg', message, user);
     });
 });
 io.of("/").adapter.on("create-room", (room) => {
