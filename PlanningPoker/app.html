@@ -30,8 +30,8 @@
    socket.on('userSet', function (data) {
       user = data.username;
       roomno = data.roomno;
-      document.body.innerHTML = '<label> Room No- <b>'+ roomno +'</b></label><br/>';
-      document.body.innerHTML += '<label> Welcome <b>'+ user +'</b></label><br/>';
+      document.body.innerHTML = '<label> Room No- <b>'+ data.roomno +'</b></label><br/>';
+      document.body.innerHTML += '<label> Welcome <b>'+ data.username +'</b></label><br/>';
       document.body.innerHTML += '<input type = "text" id = "message">\
          <button type = "button" name = "button" onclick = "sendMessage()">Send</button>\
          <div id = "message-container"></div>';
@@ -41,12 +41,13 @@
       var msg = document.getElementById('message').value;
       if (msg) {
          //socket.emit('msg', { message: msg, user: user });
+         debugger;
          socket.emit('msg', { message: msg, user: user, room: roomno });
       }
    }
 
    socket.on('newmsg', function (data) {
-      if (user) {
+      if (true) {
          document.getElementById('message-container').innerHTML += '<div><b>' +
             data.user + '</b>: ' + data.message + '</div>'
       }
