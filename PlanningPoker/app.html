@@ -28,23 +28,19 @@
       document.getElementById('error-container').innerHTML = data;
    });
 
-   var g_user;
-   var g_roomno;
    socket.on('userSet', function (username, roomno) {
-      
       document.getElementById('userDetailsDiv').hidden =true;
-      document.getElementById('rommLabel').innerHTML = "Room Number : "+g_roomno;
-      document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : "+g_user;
+      document.getElementById('rommLabel').innerHTML = "Room Number : "+document.getElementById('roomno').value;
+      document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : "+document.getElementById('name').value;
       document.getElementById('chatDiv').hidden =false;
-      g_user = username;
-      g_roomno = roomno;
+
    });
 
    function sendMessage() {
       var msg = document.getElementById('message').value;
       if (msg) {
          //socket.emit('msg', { message: msg, user: user });
-         socket.emit('msg', msg, g_roomno, g_user);
+         socket.emit('msg', msg, document.getElementById('roomno').value, document.getElementById('name').value);
       }
    }
 
