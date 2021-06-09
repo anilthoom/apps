@@ -18,7 +18,7 @@ io.on('connection', function (socket) {
         else {
             users.push(username);
             socket.join(roomno);
-            io.to(roomno).emit('userSet', { username: username, roomno: roomno });
+            io.to(roomno).emit('userSet', username, roomno);
         }
     });
 
@@ -34,7 +34,7 @@ io.of("/").adapter.on("create-room", (room) => {
   io.of("/").adapter.on("join-room", (room, id) => {
     console.log(`socket ${id} has joined room ${room}`);
   });
-  
+
 http.listen(3000, function () {
     console.log('Listening on 3000');
 });
