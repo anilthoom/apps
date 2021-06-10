@@ -27,6 +27,7 @@
 
    socket.on('userExists', function (data) {
       document.getElementById('error-container').innerHTML = data;
+      document.getElementById('error-container').hidden = false;
    });
 
    socket.on('userSet', function (username, roomno) {
