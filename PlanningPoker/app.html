@@ -15,9 +15,9 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-   function hideDiv(){
-      document.getElementById('chatDiv').hidden =true;
-      document.getElementById('error-container').hidden =true;
+   function hideDiv() {
+      document.getElementById('chatDiv').hidden = true;
+      document.getElementById('error-container').hidden = true;
    }
    var socket = io();
 
@@ -30,11 +30,11 @@
    });
 
    socket.on('userSet', function (username, roomno) {
-      document.getElementById('userDetailsDiv').hidden =true;
-      document.getElementById('error-container').hidden =true;
-      document.getElementById('rommLabel').innerHTML = "Room Number : "+document.getElementById('roomno').value;
-      document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : "+document.getElementById('name').value;
-      document.getElementById('chatDiv').hidden =false;
+      document.getElementById('userDetailsDiv').hidden = true;
+      document.getElementById('error-container').hidden = true;
+      document.getElementById('rommLabel').innerHTML = "Room Number : " + document.getElementById('roomno').value;
+      document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : " + document.getElementById('name').value;
+      document.getElementById('chatDiv').hidden = false;
 
    });
 
@@ -67,9 +67,9 @@
          Let me chat!
       </button>
    </div>
-   <div id="chatDiv"> 
+   <div id="chatDiv">
       <label id="rommLabel"> Room No- </label><br />
-      <label  id="welcomeUserLabel"> Welcome </label><br />
+      <label id="welcomeUserLabel"> Welcome </label><br />
       <input type="text" id="message">
       <button type="button" name="button" onclick="sendMessage()">Send</button>
       <div id="message-container"></div>
