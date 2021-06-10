@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
   </head>
-  
+
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
@@ -51,8 +51,8 @@
 </script>
 
 <body>
-   <div id="error-container"></div>
-   <div id="userDetailsDiv">
+   <div id="error-container" class="alert alert-danger" hidden></div>
+   <div id="userDetailsDiv" class="container">
       <label>Room number</label>
       <input id="roomno" type="text" name="roomno" value="" placeholder="Enter your room number!">
       <br /><br />
@@ -63,7 +63,7 @@
          Let me chat!
       </button>
    </div>
-   <div id="chatDiv" hidden>
+   <div id="chatDiv" hidden class="container">
       <label id="rommLabel"> Room No- </label><br />
       <label id="welcomeUserLabel"> Welcome </label><br />
       <input type="text" id="message">
