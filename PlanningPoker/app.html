@@ -31,7 +31,7 @@
       document.getElementById('rommLabel').innerHTML = "Room Number : " + document.getElementById('roomno').value;
       document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : " + document.getElementById('name').value;
       document.getElementById('chatDiv').hidden = false;
-      document.getElementById('card-deck').hidden = false;
+      document.getElementById('cardDeck').hidden = false;
       
 
    });
@@ -72,7 +72,8 @@
       <button class="btn btn-primary btn-sm" type="button" name="button" onclick="sendMessage()">Send</button>
       <div id="message-container" class="container"></div>
    </div>
-   <div class="card-deck" hidden>
+   <br/>
+   <div id="cardDeck" class="card-deck" hidden>
       <div class="card">
         <img src="..." class="card-img-top" alt="...">
         <div class="card-body">
