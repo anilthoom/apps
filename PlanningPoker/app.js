@@ -26,7 +26,16 @@ io.on('connection', function (socket) {
         console.log(message)
         io.to(roomno).emit('newmsg', message, user);
     });
+
+    socket.on('disconnecting', ()=>{
+        console.log("DISCONNECTING : ", socket.rooms);
+    });
+    socket.on('disconnect', () => {
+        // socket.rooms.size === 0;
+        console.log("DISCONNECT : ", socket.rooms);
+      });
 });
+
 io.of("/").adapter.on("create-room", (room) => {
     console.log(`room ${room} was created`);
   });
