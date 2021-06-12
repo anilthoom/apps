@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-   <title>Planning Poker</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <style>
-       p.card-text{
-          font-size: 50px;
-          text-align: center;
-       }
-       div.card-body{
-         text-align: center;
-       }
-    </style>
-  </head>
+<head>
+  <title>Planning Poker App</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style>
+    p.card-text {
+      font-size: 50px;
+      text-align: center;
+    }
+
+    div.card-body {
+      text-align: center;
+    }
+  </style>
+</head>
 
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-   var socket = io();
+  var socket = io();
 
-   function joinUserInRoom() {
-      socket.emit('joinUserInRoom', document.getElementById('roomno').value, document.getElementById('name').value);
-   };
+  function joinUserInRoom() {
+    socket.emit('joinUserInRoom', document.getElementById('roomno').value, document.getElementById('name').value);
+  };
 
-   socket.on('userExists', function (data) {
-      document.getElementById('error-container').innerHTML = data;
-      document.getElementById('error-container').hidden = false;
-   });
+  socket.on('userExists', function (data) {
+    document.getElementById('error-container').innerHTML = data;
+    document.getElementById('error-container').hidden = false;
+  });
 
-   socket.on('userSet', function (username, roomno) {
-      document.getElementById('userDetailsDiv').hidden = true;
-      document.getElementById('error-container').hidden = true;
-      document.getElementById('rommLabel').innerHTML = "Room Number : " + document.getElementById('roomno').value;
-      document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : " + document.getElementById('name').value;
-      document.getElementById('chatDiv').hidden = false;
-      document.getElementById('cardDeck').hidden = false;
-      
+  socket.on('userSet', function (username, roomno) {
+    document.getElementById('userDetailsDiv').hidden = true;
+    document.getElementById('error-container').hidden = true;
+    document.getElementById('rommLabel').innerHTML = "Room Number : " + document.getElementById('roomno').value;
+    document.getElementById('welcomeUserLabel').innerHTML = "Welcome  : " + document.getElementById('name').value;
+    document.getElementById('chatDiv').hidden = false;
+    document.getElementById('cardDeck').hidden = false;
 
-   });
 
-   function sendMessage() {
-      var msg = document.getElementById('message').value;
-      if (msg) {
-         //socket.emit('msg', { message: msg, user: user });
-         socket.emit('msg', msg, document.getElementById('roomno').value, document.getElementById('name').value);
-      }
-   }
+  });
 
-   socket.on('newmsg', function (message, user) {
-      if (true) {
-         document.getElementById('message-container').innerHTML += '<div><b>' +
-            user + '</b>: ' + message + '</div>'
-      }
-   });
+  function sendMessage() {
+    var msg = document.getElementById('message').value;
+    if (msg) {
+      //socket.emit('msg', { message: msg, user: user });
+      socket.emit('msg', msg, document.getElementById('roomno').value, document.getElementById('name').value);
+    }
+  }
+
+  socket.on('newmsg', function (message, user) {
+    if (true) {
+      document.getElementById('message-container').innerHTML += '<div><b>' +
+        user + '</b>: ' + message + '</div>'
+    }
+  });
 </script>
-
 <body>
-   <div class="container">
-   <div id="error-container" class="alert alert-danger" hidden></div>
-   <div id="userDetailsDiv" class="container">
+  <div class="container">
+    <div id="error-container" class="alert alert-danger" hidden></div>
+    <div id="userDetailsDiv" class="container">
       <label>Room number</label>
       <input id="roomno" type="text" name="roomno" value="" placeholder="Enter your room number!">
       <br /><br />
@@ -71,18 +73,18 @@
       <input id="name" type="text" name="name" value="" placeholder="Enter your name!">
       <br /><br />
       <button type="button" class="btn btn-primary btn-sm" name="button" onclick="joinUserInRoom()">
-         Let me chat!
+        Let me chat!
       </button>
-   </div>
-   <div id="chatDiv" hidden class="container">
+    </div>
+    <div id="chatDiv" hidden class="container">
       <label id="rommLabel"> Room No- </label><br />
       <label id="welcomeUserLabel"> Welcome </label><br />
       <input type="text" id="message">
       <button class="btn btn-primary btn-sm" type="button" name="button" onclick="sendMessage()">Send</button>
       <div id="message-container" class="container"></div>
-   </div>
-   <br/>
-   <div id="cardDeck" class="card-deck" >
+    </div>
+    <br />
+    <div id="cardDeck" class="card-deck">
       <div class="card shadow p-4 mb-5 bg-white rounded">
         <div class="card-body">
           <p class="card-text">0</p>
@@ -99,45 +101,51 @@
         </div>
       </div>
       <div class="card shadow p-4 mb-5 bg-white rounded">
-         <div class="card-body">
-           <p class="card-text">3</p>
-         </div>
-       </div>
-       <div class="card shadow p-4 mb-5 bg-white rounded">
-         <div class="card-body">
-           <p class="card-text">5</p>
-         </div>
-       </div><br/>
-       <div class="card shadow p-4 mb-5 bg-white rounded">
-         <div class="card-body">
-           <p class="card-text">8</p>
-         </div>
-       </div>
-       <div class="card shadow p-4 mb-5 bg-white rounded">
-         <div class="card-body">
-           <p class="card-text">13</p>
-         </div>
-       </div>
-       <div class="card shadow p-4 mb-5 bg-white rounded">
-         <div class="card-body">
-           <p class="card-text">21</p>
-         </div>
-       </div>
-       <div class="card shadow p-4 mb-5 bg-white rounded">
-         <div class="card-body">
-           <p class="card-text">34</p>
-         </div>
-       </div>
-       <div class="card shadow p-4 mb-5 bg-white rounded">
-         <div class="card-body">
-           <p class="card-text">?</p>
-         </div>
-       </div>
+        <div class="card-body">
+          <p class="card-text">3</p>
+        </div>
+      </div>
+      <div class="card shadow p-4 mb-5 bg-white rounded">
+        <div class="card-body">
+          <p class="card-text">5</p>
+        </div>
+      </div><br />
+      <div class="card shadow p-4 mb-5 bg-white rounded">
+        <div class="card-body">
+          <p class="card-text">8</p>
+        </div>
+      </div>
+      <div class="card shadow p-4 mb-5 bg-white rounded">
+        <div class="card-body">
+          <p class="card-text">13</p>
+        </div>
+      </div>
+      <div class="card shadow p-4 mb-5 bg-white rounded">
+        <div class="card-body">
+          <p class="card-text">21</p>
+        </div>
+      </div>
+      <div class="card shadow p-4 mb-5 bg-white rounded">
+        <div class="card-body">
+          <p class="card-text">34</p>
+        </div>
+      </div>
+      <div class="card shadow p-4 mb-5 bg-white rounded">
+        <div class="card-body">
+          <p class="card-text">?</p>
+        </div>
+      </div>
     </div>
-   </div>
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
