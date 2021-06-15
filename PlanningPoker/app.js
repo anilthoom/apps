@@ -27,22 +27,22 @@ io.on('connection', function (socket) {
         io.to(roomno).emit('newmsg', message, user);
     });
 
-    socket.on('disconnecting', ()=>{
+    socket.on('disconnecting', () => {
         console.log("DISCONNECTING : ", socket.rooms);
     });
     socket.on('disconnect', () => {
         // socket.rooms.size === 0;
         console.log("DISCONNECT : ", socket.rooms);
-      });
+    });
 });
 
 io.of("/").adapter.on("create-room", (room) => {
     console.log(`room ${room} was created`);
-  });
-  
-  io.of("/").adapter.on("join-room", (room, id) => {
+});
+
+io.of("/").adapter.on("join-room", (room, id) => {
     console.log(`socket ${id} has joined room ${room}`);
-  });
+});
 
 http.listen(3000, function () {
     console.log('Listening on 3000');
