@@ -68,11 +68,21 @@
       /* Lowering the shadow */
     }
 
-    .center {
+    .center-horizontal {
       margin: auto;
       width: 60%;
-      border: 5px solid #FFFF00;
+      top: 50%;
+      /*border: 1px solid #8b8b8b;*/
       padding: 10px;
+    }
+
+    .center-vertical {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      border: 5px solid #5e5e5d;
+      padding: 10px;
+      text-align: center;
     }
 
     .grow div {
@@ -155,9 +165,9 @@
 </script>
 
 <body>
-  <div class="container">
+  <div class="center-horizontal container">
     <div id="error-container" class="alert alert-danger" hidden></div>
-    <div id="userDetailsDiv" class="container">
+    <div id="userDetailsDiv" class="center container">
       <label>Room number</label>
       <input id="roomno" type="text" name="roomno" value="" placeholder="Enter your room number!">
       <br /><br />
