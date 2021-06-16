@@ -121,7 +121,6 @@
     document.getElementById('chatDiv').hidden = false;
     document.getElementById('cardsContainer').hidden = false;
 
-
   });
 
   function submitEstimation() {
@@ -163,8 +162,8 @@
       </button>
     </div>
     <div id="chatDiv" hidden class="container">
-      <label id="rommLabel"> Room No- </label><br />
-      <label id="welcomeUserLabel"> Welcome </label><br />
+      <label style="font-size: larger; color: chocolate;" id="rommLabel"> Room No- </label><br />
+      <label style="font-size: larger; color: rgb(30, 189, 210);" id="welcomeUserLabel"> Welcome </label><br />
       <input hidden type="text" id="message">
       <button hidden class="btn btn-primary btn-sm" type="button" name="button"
         onclick="submitEstimation()">Send</button>
