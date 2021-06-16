@@ -139,9 +139,9 @@
     }
   });
   var previousSelectedObj;
-  function selectedCard(obj){
-    if(previousSelectedObj){
-      previousSelectedObj.style.transform = "scale(1)";  
+  function selectedCard(obj) {
+    if (previousSelectedObj) {
+      previousSelectedObj.style.transform = "scale(1)";
     }
     previousSelectedObj = obj;
     obj.style.transform = "scale(1.2)";
@@ -166,7 +166,8 @@
       <label id="rommLabel"> Room No- </label><br />
       <label id="welcomeUserLabel"> Welcome </label><br />
       <input hidden type="text" id="message">
-      <button hidden class="btn btn-primary btn-sm" type="button" name="button" onclick="submitEstimation()">Send</button>
+      <button hidden class="btn btn-primary btn-sm" type="button" name="button"
+        onclick="submitEstimation()">Send</button>
       <div id="message-container" class="container"></div>
     </div>
     <br />
