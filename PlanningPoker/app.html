@@ -124,7 +124,7 @@
 
   });
 
-  function sendMessage() {
+  function submitEstimation() {
     var msg = previousSelectedObj.innerText;
     if (msg) {
       //socket.emit('msg', { message: msg, user: user });
@@ -165,8 +165,8 @@
     <div id="chatDiv" hidden class="container">
       <label id="rommLabel"> Room No- </label><br />
       <label id="welcomeUserLabel"> Welcome </label><br />
-      <input type="text" id="message">
-      <button class="btn btn-primary btn-sm" type="button" name="button" onclick="sendMessage()">Send</button>
+      <input hidden type="text" id="message">
+      <button hidden class="btn btn-primary btn-sm" type="button" name="button" onclick="submitEstimation()">Send</button>
       <div id="message-container" class="container"></div>
     </div>
     <br />
@@ -241,7 +241,7 @@
         <div class="column">
         </div>
         <div class="column">
-          <input type="button" class="button" value="Submit">
+          <input type="button" class="button" onclick="submitEstimation()" value="Submit">
         </div>
       </div>
 
