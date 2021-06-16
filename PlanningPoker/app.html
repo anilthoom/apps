@@ -138,9 +138,13 @@
         user + '</b>: ' + message + '</div>'
     }
   });
-
+  var previousSelectedObj;
   function selectedCard(obj){
-    alert(obj);
+    if(previousSelectedObj){
+      previousSelectedObj.style.transform = "scale(1)";  
+    }
+    previousSelectedObj = obj;
+    obj.style.transform = "scale(1.2)";
   }
 </script>
 
@@ -169,31 +173,31 @@
 
     <div id="cardsContainer" hidden class="container-cards">
       <div class="row">
-        <div id="div0" onclick="selectedCard(this)" class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">0</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">1</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">2</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">3</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">5</div>
           </div>
@@ -201,31 +205,31 @@
       </div>
 
       <div class="row">
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">8</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">13</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">21</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">34</div>
           </div>
         </div>
 
-        <div class="grow column">
+        <div onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">?</div>
           </div>
