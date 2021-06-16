@@ -61,6 +61,16 @@
       background-color: #f1f1f1;
     }
 
+    .grow div {
+      transition: 1s ease;
+    }
+    .grow div:hover {
+      -webkit-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      transform: scale(1.2);
+      transition: 1s ease;
+    }
+
     .number {
       font-size: 100px;
       font-family: fantasy;
@@ -147,31 +157,31 @@
 
     <div id="cardsContainer" hidden class="container-cards">
       <div class="row">
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">0</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">1</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">2</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">3</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">5</div>
           </div>
@@ -179,36 +189,46 @@
       </div>
 
       <div class="row">
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">8</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">13</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">21</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">34</div>
           </div>
         </div>
 
-        <div class="column">
+        <div class="grow column">
           <div class="card">
             <div class="number">?</div>
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="column">
+        </div>
+        <div class="column">
+        </div>
+        <div class="column">
+          <input type="button" class="button" value="Submit">
+        </div>
+      </div>
+
     </div>
   </div>
 </body>
