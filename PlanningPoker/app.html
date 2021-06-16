@@ -61,9 +61,17 @@
       background-color: #f1f1f1;
     }
 
+    div:onclick {
+      background-color: #d11b1b;
+      /* Scaling button to 0.98 to its original size */
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+      /* Lowering the shadow */
+    }
+
     .grow div {
       transition: 1s ease;
     }
+
     .grow div:hover {
       -webkit-transform: scale(1.2);
       -ms-transform: scale(1.2);
@@ -130,6 +138,10 @@
         user + '</b>: ' + message + '</div>'
     }
   });
+
+  function selectedCard(obj){
+    alert(obj);
+  }
 </script>
 
 <body>
@@ -157,7 +169,7 @@
 
     <div id="cardsContainer" hidden class="container-cards">
       <div class="row">
-        <div class="grow column">
+        <div id="div0" onclick="selectedCard(this)" class="grow column">
           <div class="card">
             <div class="number">0</div>
           </div>
