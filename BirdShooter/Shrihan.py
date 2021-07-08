@@ -16,7 +16,7 @@ TICKS_PER_SEC = 60
 # Size of sectors used to ease block loading.
 SECTOR_SIZE = 16
 
-WALKING_SPEED = 15
+WALKING_SPEED = 5
 FLYING_SPEED = 15
 
 GRAVITY = 5
@@ -31,7 +31,7 @@ MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 JUMP_SPEED = math.sqrt(2 * GRAVITY * MAX_JUMP_HEIGHT)
 TERMINAL_VELOCITY = 50
 
-PLAYER_HEIGHT = 2
+PLAYER_HEIGHT = 1
 
 if sys.version_info[0] >= 3:
     xrange = range
@@ -440,7 +440,7 @@ class Window(pyglet.window.Window):
         self.exclusive = False
 
         # When flying gravity has no effect and speed is increased.
-        self.flying = False
+        self.flying = True
 
         # Strafing is moving lateral to the direction you are facing,
         # e.g. moving to the left or right while continuing to face forward.
