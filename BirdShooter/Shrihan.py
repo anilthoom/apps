@@ -648,7 +648,7 @@ class Window(pyglet.window.Window):
                     if tuple(op) not in self.model.world:
                         continue
                     p[i] -= (d - pad) * face[i]
-                    if face == (0, -1, 0) or face == (0, 1, 0):
+                    if face == (-1, -0, 0) or face == (0, 1, 0):
                         # You are colliding with the ground or ceiling, so stop
                         # falling / rising.
                         self.dy = 0
@@ -687,7 +687,7 @@ class Window(pyglet.window.Window):
         else:
             self.set_exclusive_mouse(True)
 
-    def on_mouse_motion(self, x, y, dx, dy):
+    def on_mouse_motion(self, y, x, dx, dy):
         """ Called when the player moves the mouse.
 
         Parameters
@@ -891,9 +891,9 @@ def setup():
 
 
 def main():
-    window = Window(width=800, height=600, caption='Pyglet', resizable=True)
+    window = Window(width=800, height=600, caption='Shrihans Mincraft ', resizable=True)
     # Hide the mouse cursor and prevent the mouse from leaving the window.
-    window.set_exclusive_mouse(True)
+    window.set_exclusive_mouse(False)
     setup()
     pyglet.app.run()
 
