@@ -4,7 +4,7 @@ from pygame import mixer
 import math
 
 pygame.init()
-resi
+
 screen = pygame.display.set_mode((800, 600))
 backgroundImage = pygame.image.load("images/background.jpg")
 
