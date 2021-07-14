@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-
+.metadata
 .idea
 *.iws
 *.iml
