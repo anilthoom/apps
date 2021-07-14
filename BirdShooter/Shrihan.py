@@ -74,7 +74,7 @@ def tex_coords(top, bottom, side):
     return result
 
 
-TEXTURE_PATH = 'texture.png'
+TEXTURE_PATH = 'e'
 
 GRASS = tex_coords((1, 0), (0, 1), (0, 0))
 SAND = tex_coords((1, 1), (1, 1), (1, 1))
@@ -575,7 +575,7 @@ class Window(pyglet.window.Window):
             if self.sector is None:
                 self.model.process_entire_queue()
             self.sector = sector
-        m = 8
+        m = 4
         dt = min(dt, 0.2)
         for _ in xrange(m):
             self._update(dt / m)
@@ -591,7 +591,7 @@ class Window(pyglet.window.Window):
 
         """
         # walking
-        speed = FLYING_SPEED if self.flying else WALKING_SPEED
+        speed = FLYING_SPEED if self.flying else FLYING_SPEED
         d = dt * speed # distance covered this tick.
         dx, dy, dz = self.get_motion_vector()
         # New position in space, before accounting for gravity.
@@ -876,7 +876,7 @@ def setup():
 
     """
     # Set the color of "clear", i.e. the sky, in rgba.
-    glClearColor(0.5, 0.69, 1.0, 1)
+    glClearColor(0.95, 0.69, 23.0, 1)
     # Enable culling (not rendering) of back-facing facets -- facets that aren't
     # visible to you.
     glEnable(GL_CULL_FACE)
@@ -891,9 +891,9 @@ def setup():
 
 
 def main():
-    window = Window(width=800, height=600, caption='Shrihans Mincraft ', resizable=True)
+    window = Window(width=800, height=600, caption='Shrihans Minecraft ', resizable=True)
     # Hide the mouse cursor and prevent the mouse from leaving the window.
-    window.set_exclusive_mouse(False)
+    window.set_exclusive_mouse(True)
     setup()
     pyglet.app.run()
 
