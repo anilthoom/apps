@@ -437,7 +437,7 @@ class Window(pyglet.window.Window):
         super(Window, self).__init__(*args, **kwargs)
 
         # Whether or not the window exclusively captures the mouse.
-        self.exclusive = False
+        self.exclusive = True
 
         # When flying gravity has no effect and speed is increased.
         self.flying = True
