@@ -469,7 +469,7 @@ class Window(pyglet.window.Window):
         self.reticle = None
 
         # Velocity in the y (upward) direction.
-        self.dy = 0
+        self.dy = 0.1
 
         # A list of blocks the player can place. Hit num keys to cycle.
         self.inventory = [BRICK, GRASS, SAND]
