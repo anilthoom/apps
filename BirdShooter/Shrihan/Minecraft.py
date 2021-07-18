@@ -19,7 +19,7 @@ SECTOR_SIZE = 16
 WALKING_SPEED = 15
 FLYING_SPEED = 15
 
-GRAVITY = 1
+GRAVITY = 10
 MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 # To derive the formula for calculating jump speed, first solve
 #   V_t = v_0 + a * t
@@ -165,12 +165,12 @@ class Model(object):
         for x in xrange(-n, n + 1, s):
             for z in xrange(-n, n + 1, s):
                 # create a layer stone an grass everywhere.
-                self.add_block((x, y - 2, z), GRASS, immediate=False)
-                self.add_block((x, y - 3, z), STONE, immediate=False)
+                self.add_block((x, y - 2, z), GRASS, immediate=True)
+                self.add_block((x, y - 3, z), STONE, immediate=True)
                 if x in (-n, n) or z in (-n, n):
                     # create outer walls.
                     for dy in xrange(-2, 3):
-                        self.add_block((x, y + dy, z), STONE, immediate=False)
+                        self.add_block((x, y + dy, z), STONE, immediate=True)
 
         # generate the hills randomly
         o = n - 10
@@ -210,7 +210,7 @@ class Model(object):
         m = 8
         x, y, z = position
         dx, dy, dz = vector
-        previous = None
+        previous = True
         for _ in xrange(max_distance * m):
             key = normalize((x, y, z))
             if key != previous and key in self.world:
@@ -440,7 +440,7 @@ class Window(pyglet.window.Window):
         self.exclusive = False
 
         # When flying gravity has no effect and speed is increased.
-        self.flying = False
+        self.flying = True
 
         # Strafing is moving lateral to the direction you are facing,
         # e.g. moving to the left or right while continuing to face forward.
