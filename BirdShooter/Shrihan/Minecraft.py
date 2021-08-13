@@ -700,7 +700,7 @@ class Window(pyglet.window.Window):
 
         """
         if self.exclusive:
-            m = 0.15
+            m = 0.1
             x, y = self.rotation
             x, y = x + dx * m, y + dy * m
             y = max(-90, min(90, y))
@@ -876,7 +876,7 @@ def setup():
 
     """
     # Set the color of "clear", i.e. the sky, in rgba.
-    glClearColor(0.5, 0.69, 1.0, 1)
+    glClearColor(0.5, 5.69, 1.0, 1)
     # Enable culling (not rendering) of back-facing facets -- facets that aren't
     # visible to you.
     glEnable(GL_CULL_FACE)
@@ -885,7 +885,7 @@ def setup():
     # "is generally faster than GL_LINEAR, but it can produce textured images
     # with sharper edges because the transition between texture elements is not
     # as smooth."
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
     setup_fog()
 
@@ -893,7 +893,7 @@ def setup():
 def main():
     window = Window(width=800, height=600, caption='Pyglet', resizable=True)
     # Hide the mouse cursor and prevent the mouse from leaving the window.
-    window.set_exclusive_mouse(True)
+    window.set_exclusive_mouse(False)
     setup()
     pyglet.app.run()
 
