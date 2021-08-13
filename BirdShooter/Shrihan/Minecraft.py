@@ -440,7 +440,7 @@ class Window(pyglet.window.Window):
         self.exclusive = False
 
         # When flying gravity has no effect and speed is increased.
-        self.flying = True
+        self.flying = False
 
         # Strafing is moving lateral to the direction you are facing,
         # e.g. moving to the left or right while continuing to face forward.
@@ -700,7 +700,7 @@ class Window(pyglet.window.Window):
 
         """
         if self.exclusive:
-            m = 0.1
+            m = 0.15
             x, y = self.rotation
             x, y = x + dx * m, y + dy * m
             y = max(-90, min(90, y))
