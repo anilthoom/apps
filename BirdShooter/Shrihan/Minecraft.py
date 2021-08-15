@@ -19,7 +19,7 @@ SECTOR_SIZE = 16
 WALKING_SPEED = 15
 FLYING_SPEED = 15
 
-GRAVITY = 10
+GRAVITY = 15
 MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 # To derive the formula for calculating jump speed, first solve
 #   V_t = v_0 + a * t
@@ -28,7 +28,7 @@ MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 #    t = - v_0 / a
 # Use t and the desired MAX_JUMP_HEIGHT to solve for v_0 (jump speed) in
 #    s = s_0 + v_0 * t + (a * t^2) / 2
-JUMP_SPEED = math.sqrt(2 * GRAVITY * MAX_JUMP_HEIGHT)
+JUMP_SPEED = math.sqrt(9 * GRAVITY * MAX_JUMP_HEIGHT)
 TERMINAL_VELOCITY = 50
 
 PLAYER_HEIGHT = 2
@@ -437,7 +437,7 @@ class Window(pyglet.window.Window):
         super(Window, self).__init__(*args, **kwargs)
 
         # Whether or not the window exclusively captures the mouse.
-        self.exclusive = False
+        self.exclusive = True
 
         # When flying gravity has no effect and speed is increased.
         self.flying = False
@@ -452,7 +452,7 @@ class Window(pyglet.window.Window):
 
         # Current (x, y, z) position in the world, specified with floats. Note
         # that, perhaps unlike in math class, the y-axis is the vertical axis.
-        self.position = (1, 0, 0)
+        self.position = (0, 0, 0)
 
         # First element is rotation of the player in the x-z plane (ground
         # plane) measured from the z-axis down. The second is the rotation
