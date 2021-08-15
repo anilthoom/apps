@@ -16,10 +16,10 @@ TICKS_PER_SEC = 60
 # Size of sectors used to ease block loading.
 SECTOR_SIZE = 16
 
-WALKING_SPEED = 5
+WALKING_SPEED = 15
 FLYING_SPEED = 15
 
-GRAVITY = 5
+GRAVITY = 15
 MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 # To derive the formula for calculating jump speed, first solve
 #   V_t = v_0 + a * t
@@ -28,10 +28,10 @@ MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
 #    t = - v_0 / a
 # Use t and the desired MAX_JUMP_HEIGHT to solve for v_0 (jump speed) in
 #    s = s_0 + v_0 * t + (a * t^2) / 2
-JUMP_SPEED = math.sqrt(2 * GRAVITY * MAX_JUMP_HEIGHT)
+JUMP_SPEED = math.sqrt(100 * GRAVITY * MAX_JUMP_HEIGHT)
 TERMINAL_VELOCITY = 50
 
-PLAYER_HEIGHT = 1
+PLAYER_HEIGHT = 2
 
 if sys.version_info[0] >= 3:
     xrange = range
@@ -74,7 +74,7 @@ def tex_coords(top, bottom, side):
     return result
 
 
-TEXTURE_PATH = 'neterite.png'
+TEXTURE_PATH = 'texture.png'
 
 GRASS = tex_coords((1, 0), (0, 1), (0, 0))
 SAND = tex_coords((1, 1), (1, 1), (1, 1))
@@ -165,12 +165,12 @@ class Model(object):
         for x in xrange(-n, n + 1, s):
             for z in xrange(-n, n + 1, s):
                 # create a layer stone an grass everywhere.
-                self.add_block((x, y - 2, z), GRASS, immediate=False)
-                self.add_block((x, y - 3, z), STONE, immediate=False)
+                self.add_block((x, y - 2, z), GRASS, immediate=True)
+                self.add_block((x, y - 3, z), STONE, immediate=True)
                 if x in (-n, n) or z in (-n, n):
                     # create outer walls.
                     for dy in xrange(-2, 3):
-                        self.add_block((x, y + dy, z), STONE, immediate=False)
+                        self.add_block((x, y + dy, z), STONE, immediate=True)
 
         # generate the hills randomly
         o = n - 10
@@ -189,7 +189,7 @@ class Model(object):
                             continue
                         if (x - 0) ** 2 + (z - 0) ** 2 < 5 ** 2:
                             continue
-                        self.add_block((x, y, z), t, immediate=True)
+                        self.add_block((x, y, z), t, immediate=False)
                 s -= d  # decrement side length so hills taper off
 
     def hit_test(self, position, vector, max_distance=8):
@@ -210,7 +210,7 @@ class Model(object):
         m = 8
         x, y, z = position
         dx, dy, dz = vector
-        previous = None
+        previous = True
         for _ in xrange(max_distance * m):
             key = normalize((x, y, z))
             if key != previous and key in self.world:
@@ -440,7 +440,7 @@ class Window(pyglet.window.Window):
         self.exclusive = True
 
         # When flying gravity has no effect and speed is increased.
-        self.flying = True
+        self.flying = False
 
         # Strafing is moving lateral to the direction you are facing,
         # e.g. moving to the left or right while continuing to face forward.
@@ -469,7 +469,7 @@ class Window(pyglet.window.Window):
         self.reticle = None
 
         # Velocity in the y (upward) direction.
-        self.dy = 0.1
+        self.dy = 0
 
         # A list of blocks the player can place. Hit num keys to cycle.
         self.inventory = [BRICK, GRASS, SAND]
@@ -575,7 +575,7 @@ class Window(pyglet.window.Window):
             if self.sector is None:
                 self.model.process_entire_queue()
             self.sector = sector
-        m = 4
+        m = 8
         dt = min(dt, 0.2)
         for _ in xrange(m):
             self._update(dt / m)
@@ -591,7 +591,7 @@ class Window(pyglet.window.Window):
 
         """
         # walking
-        speed = FLYING_SPEED if self.flying else FLYING_SPEED
+        speed = FLYING_SPEED if self.flying else WALKING_SPEED
         d = dt * speed # distance covered this tick.
         dx, dy, dz = self.get_motion_vector()
         # New position in space, before accounting for gravity.
@@ -648,7 +648,7 @@ class Window(pyglet.window.Window):
                     if tuple(op) not in self.model.world:
                         continue
                     p[i] -= (d - pad) * face[i]
-                    if face == (-1, -0, 0) or face == (0, 1, 0):
+                    if face == (0, -1, 0) or face == (0, 1, 0):
                         # You are colliding with the ground or ceiling, so stop
                         # falling / rising.
                         self.dy = 0
@@ -687,7 +687,7 @@ class Window(pyglet.window.Window):
         else:
             self.set_exclusive_mouse(True)
 
-    def on_mouse_motion(self, y, x, dx, dy):
+    def on_mouse_motion(self, x, y, dx, dy):
         """ Called when the player moves the mouse.
 
         Parameters
@@ -876,7 +876,7 @@ def setup():
 
     """
     # Set the color of "clear", i.e. the sky, in rgba.
-    glClearColor(0.95, 0.69, 23.0, 1)
+    glClearColor(0.5, 5.69, 1.0, 1)
     # Enable culling (not rendering) of back-facing facets -- facets that aren't
     # visible to you.
     glEnable(GL_CULL_FACE)
@@ -885,15 +885,15 @@ def setup():
     # "is generally faster than GL_LINEAR, but it can produce textured images
     # with sharper edges because the transition between texture elements is not
     # as smooth."
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST)
     setup_fog()
 
 
 def main():
-    window = Window(width=800, height=600, caption='Shrihans Minecraft ', resizable=True)
+    window = Window(width=800, height=600, caption='Pyglet', resizable=True)
     # Hide the mouse cursor and prevent the mouse from leaving the window.
-    window.set_exclusive_mouse(True)
+    window.set_exclusive_mouse(False)
     setup()
     pyglet.app.run()
 
