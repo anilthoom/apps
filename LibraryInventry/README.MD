@@ -32,7 +32,7 @@ Without Key
 
 With Key
 
-	kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning -property "key.separator= - " --property "print.key=true"
+	kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test-topic --from-beginning --property "key.separator= - " --property "print.key=true"
 
 With Consumer Group
 
