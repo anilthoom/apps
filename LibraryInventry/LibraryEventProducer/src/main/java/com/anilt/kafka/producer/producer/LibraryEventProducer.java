@@ -46,6 +46,7 @@ public class LibraryEventProducer {
 
         try {
             sendResult = kafkaTemplate.sendDefault(key, value).get();
+            log.info("Send result is {} ", sendResult.toString());
         } catch (ExecutionException | InterruptedException e) {
             log.error("ExecutionException/InterruptedException sending the message and the exception is {}", e.getMessage());
             throw e;
