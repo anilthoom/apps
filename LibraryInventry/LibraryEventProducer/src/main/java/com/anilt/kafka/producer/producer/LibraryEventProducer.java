@@ -41,6 +41,23 @@ public class LibraryEventProducer {
         });
     }
 
+    public void sendLibraryEvent_Approach2(LibraryEvent libraryEvent) throws JsonProcessingException {
+        Integer key = libraryEvent.getLibraryEventId();
+        String value = objectMapper.writeValueAsString(libraryEvent);
+        ListenableFuture<SendResult<Integer, String>> listenableFuture = kafkaTemplate.send("library-events", key, value);
+        listenableFuture.addCallback(new ListenableFutureCallback<SendResult<Integer, String>>() {
+            @Override
+            public void onFailure(Throwable ex) {
+                handleFailure(key, value, ex);
+            }
+
+            @Override
+            public void onSuccess(SendResult<Integer, String> result) {
+                handleSuccess(key, value, result);
+            }
+        });
+    }
+
     public SendResult<Integer, String> sendLibraryEventSynchronous(LibraryEvent libraryEvent) throws JsonProcessingException, ExecutionException, InterruptedException, TimeoutException {
         Integer key = libraryEvent.getLibraryEventId();
         String value = objectMapper.writeValueAsString(libraryEvent);
