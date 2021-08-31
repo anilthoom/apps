@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
-@Profile("local")
+//@Profile("local")
 public class AutoCreateConfig {
     // Note: This is not recommended for production use
     @Bean
