@@ -1,6 +1,7 @@
 package com.anilt.kafka.producer.controller;
 
 import com.anilt.kafka.producer.model.LibraryEvent;
+import com.anilt.kafka.producer.model.LibraryEventType;
 import com.anilt.kafka.producer.producer.LibraryEventProducer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class LibraryEventsController {
         log.info("Before posting the event");
         //libraryEventProducer.sendLibraryEvent(libraryEvent);
         //libraryEventProducer.sendLibraryEventSynchronous(libraryEvent);
+        libraryEvent.setLibraryEventType(LibraryEventType.NEW);
         libraryEventProducer.sendLibraryEvent_Approach2(libraryEvent);
         log.info("After posting the event");
         return ResponseEntity.status(HttpStatus.CREATED).body(libraryEvent);
