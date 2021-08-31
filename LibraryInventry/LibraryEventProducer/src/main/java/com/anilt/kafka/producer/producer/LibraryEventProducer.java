@@ -24,6 +24,11 @@ public class LibraryEventProducer {
     @Autowired
     ObjectMapper objectMapper;
 
+    /**
+     * Uses sendDefault method of KafkaTemplate, which is asynchronous
+     * @param libraryEvent
+     * @throws JsonProcessingException
+     */
     public void sendLibraryEvent(LibraryEvent libraryEvent) throws JsonProcessingException {
         Integer key = libraryEvent.getLibraryEventId();
         String value = objectMapper.writeValueAsString(libraryEvent);
@@ -58,6 +63,16 @@ public class LibraryEventProducer {
         });
     }
 
+    /**
+     * Uses SendDefault method of KafkaTemplate and made synchronous by using sendDefault().get()
+     * Also used timeout get(timeout)
+     * @param libraryEvent
+     * @return
+     * @throws JsonProcessingException
+     * @throws ExecutionException
+     * @throws InterruptedException
+     * @throws TimeoutException
+     */
     public SendResult<Integer, String> sendLibraryEventSynchronous(LibraryEvent libraryEvent) throws JsonProcessingException, ExecutionException, InterruptedException, TimeoutException {
         Integer key = libraryEvent.getLibraryEventId();
         String value = objectMapper.writeValueAsString(libraryEvent);
