@@ -12,7 +12,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Builder
-@
+@Entity
 public class LibraryEvent {
 
     @Id
