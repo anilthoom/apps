@@ -17,7 +17,7 @@ TICKS_PER_SEC = 60
 SECTOR_SIZE = 16
 
 WALKING_SPEED = 10
-FLYING_SPEED = 1000000000000000
+FLYING_SPEED = 10
 
 GRAVITY = 15
 MAX_JUMP_HEIGHT = 1.0 # About the height of a block.
@@ -440,7 +440,7 @@ class Window(pyglet.window.Window):
         self.exclusive = True
 
         # When flying gravity has no effect and speed is increased.
-        self.flying = False
+        self.flying = True
 
         # Strafing is moving lateral to the direction you are facing,
         # e.g. moving to the left or right while continuing to face forward.
