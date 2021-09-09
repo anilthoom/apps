@@ -5,16 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
+@
 public class LibraryEvent {
 
     @Id
@@ -24,6 +22,6 @@ public class LibraryEvent {
     @Enumerated(EnumType.STRING)
     private LibraryEventType libraryEventType;
 
-
+    @OneToOne
     private Book book;
 }
