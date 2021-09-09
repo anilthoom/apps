@@ -9,6 +9,8 @@ Start Zookeeper and Kafka Broker
 	Start up the Kafka Broker.
 
 		kafka-server-start.bat ..\..\config\server.properties
+		kafka-server-start.bat ..\..\config\server-1.properties
+		kafka-server-start.bat ..\..\config\server-2.properties
 
 How to create a topic ?
 
