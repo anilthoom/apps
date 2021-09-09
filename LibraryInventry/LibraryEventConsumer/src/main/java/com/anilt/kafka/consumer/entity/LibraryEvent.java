@@ -1,9 +1,6 @@
 package com.anilt.kafka.consumer.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -23,5 +20,6 @@ public class LibraryEvent {
     private LibraryEventType libraryEventType;
 
     @OneToOne(mappedBy = "libraryEventId", cascade = {CascadeType.ALL})
+    @ToString.Exclude
     private Book book;
 }
