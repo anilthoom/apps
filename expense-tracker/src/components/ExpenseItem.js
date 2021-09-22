@@ -1,5 +1,5 @@
 import "./ExpenseItem.css";
-function ExpenseItem() {
+function ExpenseItem(props) {
 
     const epxenseDate =  new Date();
     const expenseTitle = "Car Insurance";
@@ -7,10 +7,10 @@ function ExpenseItem() {
 
     return (
         <div className="expense-item">
-            <div>{epxenseDate.toLocaleDateString()}</div>
+            <div>{props.date.toLocaleDateString()}</div>
             <div className="expense-item__description">
-                <h2>{expenseTitle}</h2>
-                <div className="expense-item__price">${expenseAmount}</div>
+                <h2>{props.title}</h2>
+                <div className="expense-item__price">${props.amount}</div>
             </div>
         </div>
     );
