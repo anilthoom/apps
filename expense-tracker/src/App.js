@@ -13,14 +13,14 @@ function App() {
       amount: 10.13
     },
     {
-      title: 'Sofa cleaning',
+      title: 'Carpentar work',
       date: new Date(),
-      amount: 10.13
+      amount: 34.15
     },
     {
-      title: 'Sofa cleaning',
+      title: 'Dry cleaning',
       date: new Date(),
-      amount: 10.13
+      amount: 5.75
     },
   ];
   return (
