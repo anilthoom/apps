@@ -12,6 +12,16 @@ function App() {
       date: new Date(),
       amount: 10.13
     },
+    {
+      title: 'Sofa cleaning',
+      date: new Date(),
+      amount: 10.13
+    },
+    {
+      title: 'Sofa cleaning',
+      date: new Date(),
+      amount: 10.13
+    },
   ];
   return (
     <div>
