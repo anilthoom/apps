@@ -1,6 +1,7 @@
 function Card(props){
+    const classes = props.className;
     return(
-        <div className="card">{props.children}</div>
+        <div className={classes}>{props.children}</div>
     );
 }
 
