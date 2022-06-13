@@ -145,6 +145,7 @@
     var msg = previousSelectedObj.innerText;
     if (msg) {
       //socket.emit('msg', { message: msg, user: user });
+      //TODO: Once everyone submits, show the value
       socket.emit('msg', msg, document.getElementById('roomno').value, document.getElementById('name').value);
     }
   }
